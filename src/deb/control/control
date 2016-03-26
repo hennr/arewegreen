@@ -1,0 +1,8 @@
+Package: arewegood
+Version: 1.0
+Section: misc
+Priority: low
+Architecture: all
+Description: are we good or what?
+Maintainer: hennr@hennr.name
+Depends: openjdk-8-jre

@@ -1,0 +1,8 @@
+#!/bin/sh
+
+update-rc.d arewegood remove
+rm -f /etc/init.d/arewegood
+
+rm -f /var/log/arewegood.log
+
+deluser --system arewegood

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+chmod +x /usr/share/arewegood/*.jar
+
+ln -fs /usr/share/arewegood/arewegood.jar /etc/init.d/arewegood
+
+#chown arewegood /etc/init.d/arewegood
+update-rc.d arewegood defaults
+service arewegood start
+
+echo "arewegood was successfully installed. Open http://localhost:8080 to see your dashboard."

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+service arewegood stop
+
+# make sure it's dead
+killall -9 -u arewegood &> /dev/null || /bin/true

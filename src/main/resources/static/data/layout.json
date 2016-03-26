@@ -1,0 +1,17 @@
+[
+	[
+		{ "visual": "number", "class": "storm", "title": "Collaborators",  "xhr": "/data/collaborators", "xhrValue": "value", "xhrInterval": 33},
+		{ "visual": "number", "class": "night-sky", "title": "Forks",  "xhr": "/data/forks", "xhrValue": "value", "xhrInterval": 41},
+		{ "visual": "number", "class": "flower", "title": "Stargazers",  "xhr": "/data/stargazers", "xhrValue": "value", "xhrInterval": 19},
+		{ "visual": "number", "class": "comets", "title": "Issues",  "xhr": "/data/issues", "xhrValue": "value", "xhrInterval": 12, "green": "<=0", "red": ">0" }
+	],
+	[
+		{ "visual": "number", "class": "comets", "build": "green", "value": "OK", "title": "Build" },
+		{ "visual": "number", "class": "skyline", "unit": "bytes", "value": "2192", "title": "Code" },
+		{ "visual": "number", "class": "desert", "unit": "percent", "build": "red", "value": "82", "title": "Coverage" },
+		{ "visual": "weather", "class": "storm", "city": "berlin,de", "unit": "c", "green": ">0", "red": "<=0"  }
+	],
+	[
+		{ "visual": "number", "class": "waterfall", "title": "@github.com/sbstnmsch/dashbot", "build": "green", "value": "dashbot"}
+	]
+]
