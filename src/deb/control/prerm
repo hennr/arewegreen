@@ -1,6 +1,15 @@
 #!/bin/sh
 
-service arewegood stop
-
 # make sure it's dead
+service arewegood stop
 killall -9 -u arewegood &> /dev/null || /bin/true
+
+# rm init script stuff
+update-rc.d arewegood remove
+rm -f /etc/init.d/arewegood
+
+# rm logs
+rm -f /var/log/arewegood.log
+
+# rm system user
+deluser --system arewegood
