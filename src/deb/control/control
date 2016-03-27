@@ -1,5 +1,5 @@
-Package: arewegood
-Version: 1.0
+Package: [[artifactId]]
+Version: [[version]]
 Section: misc
 Priority: low
 Architecture: all
