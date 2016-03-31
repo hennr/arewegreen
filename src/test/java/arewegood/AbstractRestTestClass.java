@@ -1,4 +1,4 @@
-package dashbotdemo;
+package arewegood;
 
 import com.jayway.restassured.RestAssured;
 import org.junit.Before;

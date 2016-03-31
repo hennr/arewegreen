@@ -1,4 +1,4 @@
-package dashbotdemo;
+package arewegood;
 
 import static com.jayway.restassured.RestAssured.get;
 import org.junit.Test;

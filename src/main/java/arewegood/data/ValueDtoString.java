@@ -1,4 +1,4 @@
-package dashbotdemo.data;
+package arewegood.data;
 
 public class ValueDtoString {
 
