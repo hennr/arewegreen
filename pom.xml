@@ -13,6 +13,10 @@
     <artifactId>arewegood</artifactId>
     <version>0.1</version>
 
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
