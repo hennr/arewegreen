@@ -63,8 +63,6 @@
                     <fork>true</fork>
                     <finalName>${project.artifactId}</finalName>
                     <executable>true</executable>
-                    <!-- run on different port when in dev mode than the installed debian package which uses 8080 -->
-                    <jvmArguments>-Dserver.port=9000</jvmArguments>
                 </configuration>
             </plugin>
 
