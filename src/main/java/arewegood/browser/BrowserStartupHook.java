@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
 
     @Value("${startBrowserAutomatically}")
-    private String startAutomatically;
+    String startAutomatically;
 
     @Autowired
     private BrowserDriverFactory driverFactory;
