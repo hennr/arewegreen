@@ -8,4 +8,4 @@ ln -fs /usr/share/arewegood/arewegood.jar /etc/init.d/arewegood
 update-rc.d arewegood defaults
 service arewegood start
 
-echo "arewegood was successfully installed. Open http://localhost:8080 to see your dashboard."
+echo "arewegood was successfully installed. Open http://localhost:8089 to see your dashboard."
