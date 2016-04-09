@@ -5,4 +5,5 @@ Priority: low
 Architecture: all
 Description: are we good or what?
 Maintainer: hennr@hennr.name
-Depends: openjdk-8-jre
+Depends:
+Recommends: openjdk-8-jre
