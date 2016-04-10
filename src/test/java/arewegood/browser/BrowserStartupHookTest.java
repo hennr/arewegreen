@@ -5,12 +5,11 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -32,6 +31,7 @@ public class BrowserStartupHookTest {
 
     @Configuration
     @ComponentScan("arewegood")
+    @PropertySource(value = "application.properties")
     static class SomeConfig {
 
         @Bean
@@ -43,18 +43,10 @@ public class BrowserStartupHookTest {
         BrowserDriverFactory browserDriverFactory() {
             return browserDriverFactoryMock;
         }
-
-        // because @PropertySource doesnt work in annotation only land
-        @Bean
-        PropertyPlaceholderConfigurer propConfig() {
-            PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-            ppc.setLocation(new ClassPathResource("application.properties"));
-            return ppc;
-        }
     }
 
     @Test
-    public void honourDisabledsConfigSwitch() {
+    public void honourDisabledConfigSwitch() {
         //when
         browserStartupHook.startAutomatically = "false";
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
