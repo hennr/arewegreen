@@ -46,7 +46,7 @@ public class BrowserStartupHookTest {
     }
 
     @Test
-    public void honourDisabledConfigSwitch() {
+    public void honoursDisabledConfigSwitch() {
         //when
         browserStartupHook.startAutomatically = "false";
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
