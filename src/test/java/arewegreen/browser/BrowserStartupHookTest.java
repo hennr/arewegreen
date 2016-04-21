@@ -29,7 +29,6 @@ public class BrowserStartupHookTest {
 
     static FirefoxDriver firefoxDriverMock = mock(FirefoxDriver.class);
 
-    @Configuration
     @ComponentScan("arewegreen")
     @PropertySource(value = "application.properties")
     static class SomeConfig {
