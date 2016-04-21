@@ -1,4 +1,4 @@
-package arewegood;
+package arewegreen;
 
 import static com.jayway.restassured.RestAssured.get;
 import org.junit.Test;

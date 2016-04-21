@@ -1,4 +1,4 @@
-package arewegood.browser;
+package arewegreen.browser;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,7 +30,7 @@ public class BrowserStartupHookTest {
     static FirefoxDriver firefoxDriverMock = mock(FirefoxDriver.class);
 
     @Configuration
-    @ComponentScan("arewegood")
+    @ComponentScan("arewegreen")
     @PropertySource(value = "application.properties")
     static class SomeConfig {
 

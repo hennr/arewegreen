@@ -1,4 +1,4 @@
-package arewegood.browser;
+package arewegreen.browser;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;

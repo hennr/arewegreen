@@ -1,12 +1,12 @@
 [
 	[
-		{ "visual": "number", "class": "storm", "title": "Collaborators",  "xhr": "/data/collaborators", "xhrValue": "value", "xhrInterval": 10}
+		{ "visual": "number", "class": "storm", "title": "Waiting for data",  "xhr": "/data/nonexistent", "xhrValue": "value", "xhrInterval": 10}
 	],
 	[
 		{ "visual": "number", "class": "comets", "build": "green", "value": "OK", "title": "Build" },
 		{ "visual": "number", "class": "desert", "unit": "percent", "build": "orange", "value": "82", "title": "Coverage" }
 	],
 	[
-		{ "visual": "number", "class": "waterfall", "title": "https://github.com/hennr/arewegood/wiki", "build": "none", "value": "docs"}
+		{ "visual": "number", "class": "waterfall", "title": "https://github.com/hennr/arewegreen/wiki", "build": "none", "value": "docs"}
 	]
 ]

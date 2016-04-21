@@ -1,13 +1,13 @@
-package arewegood;
+package arewegreen;
 
-import arewegood.browser.BrowserDriverFactory;
+import arewegreen.browser.BrowserDriverFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource(ignoreResourceNotFound = true, value = "file:/etc/arewegood/arewegood.properties")
+@PropertySource(ignoreResourceNotFound = true, value = "file:/etc/arewegreen/arewegreen.properties")
 public class Application {
 
     @Bean

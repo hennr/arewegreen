@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>name.hennr</groupId>
-    <artifactId>arewegood</artifactId>
+    <artifactId>arewegreen</artifactId>
     <version>0.1</version>
 
     <properties>
@@ -113,9 +113,9 @@
                                     <type>file</type>
                                     <mapper>
                                         <type>perm</type>
-                                        <prefix>/usr/share/arewegood</prefix>
-                                        <user>arewegood</user>
-                                        <group>arewegood</group>
+                                        <prefix>/usr/share/arewegreen</prefix>
+                                        <user>arewegreen</user>
+                                        <group>arewegreen</group>
                                     </mapper>
                                 </data>
                                 <data>
@@ -128,8 +128,8 @@
                                     </paths>
                                     <mapper>
                                         <type>perm</type>
-                                        <user>arewegood</user>
-                                        <group>arewegood</group>
+                                        <user>arewegreen</user>
+                                        <group>arewegreen</group>
                                     </mapper>
                                 </data>
                             </dataSet>

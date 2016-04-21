@@ -1,4 +1,4 @@
-package arewegood;
+package arewegreen;
 
 import com.jayway.restassured.RestAssured;
 import org.junit.Before;

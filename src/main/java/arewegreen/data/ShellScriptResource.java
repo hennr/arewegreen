@@ -1,4 +1,4 @@
-package arewegood.data;
+package arewegreen.data;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

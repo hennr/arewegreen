@@ -1,11 +1,10 @@
 #!/bin/sh
 
-chmod +x /usr/share/arewegood/*.jar
+chmod +x /usr/share/arewegreen/*.jar
 
-ln -fs /usr/share/arewegood/arewegood.jar /etc/init.d/arewegood
+ln -fs /usr/share/arewegreen/arewegreen.jar /etc/init.d/arewegreen
 
-#chown arewegood /etc/init.d/arewegood
-update-rc.d arewegood defaults
-service arewegood start
+update-rc.d arewegreen defaults
+service arewegreen start
 
-echo "arewegood was successfully installed. Open http://localhost:8089 to see your dashboard."
+echo "arewegreen was successfully installed. Open http://localhost:8089 to see your dashboard."

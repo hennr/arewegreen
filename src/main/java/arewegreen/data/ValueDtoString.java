@@ -1,4 +1,4 @@
-package arewegood.data;
+package arewegreen.data;
 
 public class ValueDtoString {
 
