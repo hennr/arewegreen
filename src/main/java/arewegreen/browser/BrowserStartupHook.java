@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 @Component
-public class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
+class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
 
     @Value("${startBrowserAutomatically}")
     String startAutomatically;
@@ -18,7 +18,7 @@ public class BrowserStartupHook implements ApplicationListener<ApplicationReadyE
     private BrowserDriverFactory driverFactory;
 
     @Autowired
-    Environment environment;
+    private Environment environment;
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
