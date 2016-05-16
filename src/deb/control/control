@@ -1,9 +1,0 @@
-Package: [[artifactId]]
-Version: [[version]]
-Section: misc
-Priority: low
-Architecture: all
-Description: are we good or what?
-Maintainer: hennr@hennr.name
-Depends:
-Recommends: openjdk-8-jre
