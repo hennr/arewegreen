@@ -32,3 +32,7 @@ Also it will start a browser which will open the dashboard in a maximized window
 AreWeGreen is licensed under the GPLv3+.
 
 It includes [dashbot](https://github.com/sbstnmsch/dashbot/) (src/main/resources/static) which is licensed under the [MIT License](LICENSE-dashbot).
+
+
+</br></br>
+<p align="center">Made with ♥ in Berlin</p>
