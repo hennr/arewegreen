@@ -1,6 +1,7 @@
 package arewegreen;
 
 import static com.jayway.restassured.RestAssured.get;
+
 import org.junit.Test;
 
 public class DashbotLoadsTest extends AbstractRestTestClass {
