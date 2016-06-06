@@ -2,17 +2,17 @@ package arewegreen.browser;
 
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+import arewegreen.config.AreWeGreenProperties;
 
 @Component
 class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
 
-    @Value("${startBrowserAutomatically}")
-    String startAutomatically;
+    @Autowired
+    AreWeGreenProperties configuration;
 
     @Autowired
     private BrowserDriverFactory driverFactory;
@@ -22,7 +22,7 @@ class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        if (Boolean.parseBoolean(startAutomatically)) {
+        if (configuration.getStartBrowserAutomatically()) {
             openBrowser();
         }
     }

@@ -7,11 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
-@PropertySource(ignoreResourceNotFound = true, value = "file:/etc/arewegreen/arewegreen.properties")
+@PropertySource(ignoreResourceNotFound = true, value = "file:${user.home}/arewegreen/application.properties")
 public class Application {
 
     @Bean
-    BrowserDriverFactory browserDriverFactory()  {
+    BrowserDriverFactory browserDriverFactory() {
         return new BrowserDriverFactory();
     }
 
