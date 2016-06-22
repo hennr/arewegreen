@@ -1,6 +1,6 @@
 package arewegreen;
 
-import static com.jayway.restassured.RestAssured.get;
+import static io.restassured.RestAssured.get;
 
 import org.junit.Test;
 
