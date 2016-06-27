@@ -77,7 +77,7 @@
 
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>3.0.2</version>
                 <configuration>
                     <finalName>this-is-not-the-spring-boot-fat-jar</finalName>
                 </configuration>
