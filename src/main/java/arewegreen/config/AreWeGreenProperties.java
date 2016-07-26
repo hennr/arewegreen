@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class AreWeGreenProperties {
 
     private boolean startBrowserAutomatically = true;
+    private boolean createDefaultConfigFile = true;
 
     public boolean getStartBrowserAutomatically() {
         return startBrowserAutomatically;
@@ -17,5 +18,13 @@ public class AreWeGreenProperties {
 
     public void setStartBrowserAutomatically(boolean startBrowserAutomatically) {
         this.startBrowserAutomatically = startBrowserAutomatically;
+    }
+
+    public boolean getCreateDefaultConfigFile() {
+        return createDefaultConfigFile;
+    }
+
+    public void setCreateDefaultConfigFile(boolean createDefaultConfigFile) {
+        this.createDefaultConfigFile = createDefaultConfigFile;
     }
 }

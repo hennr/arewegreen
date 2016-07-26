@@ -16,9 +16,12 @@ class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
     @Autowired
     Environment environment;
 
+    @Autowired
+    AreWeGreenProperties properties;
+
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        if (!configExists()) {
+        if (properties.getCreateDefaultConfigFile() && !configExists()) {
             try {
                 File arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen");
                 File arewegreenApplicationProperties = new File(arewegreenHome.getCanonicalPath() + "/application.properties");

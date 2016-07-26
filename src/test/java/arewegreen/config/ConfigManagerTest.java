@@ -14,8 +14,7 @@ import org.springframework.mock.env.MockEnvironment;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
@@ -30,8 +29,12 @@ public class ConfigManagerTest {
     @Autowired
     ConfigManager configManager;
 
+    @Autowired
+    AreWeGreenProperties properties;
+
     @Before
     public void setup() throws IOException {
+        properties.setCreateDefaultConfigFile(true);
         MockEnvironment environment = new MockEnvironment();
         environment.setProperty("user.home", folder.getRoot().getCanonicalPath());
         configManager.environment = environment;
@@ -57,6 +60,11 @@ public class ConfigManagerTest {
     }
 
     static class AvoidStartupOfTheRealApplicationContextToAvoidActionsTakenInOtherBeansOnStartup {
+        @Bean
+        AreWeGreenProperties areWeGreenProperties() {
+            return new AreWeGreenProperties();
+        }
+
         @Bean
         ConfigManager configManager() {
             return new ConfigManager();
