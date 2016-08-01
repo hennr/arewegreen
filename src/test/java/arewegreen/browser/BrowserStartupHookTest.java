@@ -1,75 +1,43 @@
 package arewegreen.browser;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 import arewegreen.config.AreWeGreenProperties;
+import org.junit.Test;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.core.env.Environment;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = BrowserStartupHookTest.SomeConfig.class)
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.*;
+
 public class BrowserStartupHookTest {
 
-    @Autowired
-    AreWeGreenProperties areWeGreenProperties;
+    AreWeGreenProperties areWeGreenProperties = mock(AreWeGreenProperties.class);
 
-    @Autowired
-    BrowserStartupHook browserStartupHook;
+    BrowserService browserServiceMock = mock(BrowserService.class);
 
-    static BrowserDriverFactory browserDriverFactoryMock = mock(BrowserDriverFactory.class);
+    Environment environmentMock = mock(Environment.class);
 
-    @ComponentScan("arewegreen")
-    @PropertySource(value = "application.properties")
-    static class SomeConfig {
-
-        @Bean
-        BrowserStartupHook browserStartupHook() {
-            return new BrowserStartupHook();
-        }
-
-        @Bean
-        BrowserDriverFactory browserDriverFactory() {
-            return browserDriverFactoryMock;
-        }
-    }
+    BrowserStartupHook browserStartupHook = new BrowserStartupHook(areWeGreenProperties, browserServiceMock, environmentMock);
 
     @Test
     public void honoursDisabledConfigSwitch() {
+        given(areWeGreenProperties.getStartBrowserAutomatically()).willReturn(false);
+
         //when
-        areWeGreenProperties.setStartBrowserAutomatically(false);
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
 
         // then
-        verifyZeroInteractions(browserDriverFactoryMock);
+        verifyZeroInteractions(browserServiceMock);
     }
 
     @Test
     public void honoursEnabledConfigSwitch() {
-        // given
-        FirefoxDriver firefoxDriverMock = mock(FirefoxDriver.class);
-        when(browserDriverFactoryMock.getDriver()).thenReturn(firefoxDriverMock);
-        WebDriver.Options options = mock(WebDriver.Options.class);
-        when(options.window()).thenReturn(mock(WebDriver.Window.class));
-        when(firefoxDriverMock.manage()).thenReturn(options);
+        given(areWeGreenProperties.getStartBrowserAutomatically()).willReturn(true);
+        given(environmentMock.getProperty("local.server.port")).willReturn("8080");
 
         // when
-        areWeGreenProperties.setStartBrowserAutomatically(true);
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
 
         // then
-        verify(browserDriverFactoryMock).getDriver();
+        verify(browserServiceMock).openUri("http://localhost:8080");
     }
 }
