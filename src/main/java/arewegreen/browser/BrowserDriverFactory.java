@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 public class BrowserDriverFactory {
 
     WebDriver getDriver() {
-        return new FirefoxDriver();
+        try {
+            return new FirefoxDriver();
+        } catch (Exception e) {
+            throw new RuntimeException("unable to start firefox");
+        }
     }
 
 }
