@@ -15,7 +15,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.*;
+import java.util.Properties;
 
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.mock;
 
@@ -56,7 +58,10 @@ public class ConfigManagerTest {
         File applicationProperties = new File(tempFolder.getCanonicalPath() + "/arewegreen/application.properties");
 
         assertTrue(applicationProperties.exists());
-        // TODO check property values
+        FileInputStream applicationPropertiesStream = new FileInputStream(applicationProperties);
+        Properties properties = new Properties();
+        properties.load(applicationPropertiesStream);
+        assertThat(properties.getProperty("startBrowserAutomatically"), equalTo("true"));
     }
 
     static class AvoidStartupOfTheRealApplicationContextToAvoidActionsTakenInOtherBeansOnStartup {

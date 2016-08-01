@@ -7,6 +7,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 
@@ -22,15 +23,7 @@ class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
         if (properties.getCreateDefaultConfigFile() && !configExists()) {
-            try {
-                File arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen");
-                File arewegreenApplicationProperties = new File(arewegreenHome.getCanonicalPath() + "/application.properties");
-
-                Files.createDirectory(arewegreenHome.toPath());
-                Files.createFile(arewegreenApplicationProperties.toPath());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            createDefaultConfig();
         }
     }
 
@@ -42,6 +35,20 @@ class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     private void createDefaultConfig() {
+        try {
+            File arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen");
+            File arewegreenApplicationProperties = new File(arewegreenHome.getCanonicalPath() + "/application.properties");
 
+            Files.createDirectory(arewegreenHome.toPath());
+            Files.createFile(arewegreenApplicationProperties.toPath());
+
+            FileWriter writer = new FileWriter(arewegreenApplicationProperties);
+            writer.append("startBrowserAutomatically=true");
+            writer.flush();
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
