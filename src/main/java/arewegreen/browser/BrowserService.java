@@ -1,18 +1,24 @@
 package arewegreen.browser;
 
-import org.springframework.stereotype.Service;
-
-import java.awt.*;
+import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 @Service
 class BrowserService {
+
+    private static Logger log = LoggerFactory.getLogger(BrowserService.class);
 
     void openUri(String uri) {
         if (isDesktopSupported()) {
             browseTo(uri);
+        } else {
+            log.error("Failed to open arewegreen in your browser. Do you have a default browser configured and in your path?");
         }
     }
 
@@ -24,7 +30,7 @@ class BrowserService {
         }
     }
 
-    boolean isDesktopSupported() {
+    private boolean isDesktopSupported() {
         return Desktop.isDesktopSupported();
     }
 
