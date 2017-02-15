@@ -1,4 +1,4 @@
-package arewegreen.controller;
+package arewegreen.layout;
 
 import arewegreen.config.ConfigManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +12,12 @@ import java.nio.file.Paths;
 @RestController
 public class LayoutLocationController {
 
+    private ConfigManager config;
+
     @Autowired
-    ConfigManager config;
+    public LayoutLocationController(ConfigManager config) {
+        this.config = config;
+    }
 
     @GetMapping("/layout")
     public Object exposeLayoutJsonLocationForDashbot() throws IOException {
