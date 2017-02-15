@@ -20,11 +20,12 @@ The result could look like this:
 
 ## Get started
 
-areWeGreen is not yet finished. Here is the plan though:
+AreWeGreen is not yet finished. Here is the plan though:
 
-To run areWeGreen you simply need to fetch a release and add the executable to your autostarted programs.
-areWeGreen will create a configuration folder in the home directory of the current user then.
-Also it will start a browser which will open the dashboard in a maximized window for you.
+To run AreWeGreen you simply need to fetch a release and add the executable to your autostart config.
+AreWeGreen will create a configuration folder in the home directory of the current user automatically.
+Here you will be able to define the layout and place scripts that will provide data for your board.
+Once started AreWeGreen will start a browser which opens the dashboard in a maximized window for you.
 
 
 ## License
