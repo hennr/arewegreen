@@ -7,48 +7,58 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Paths;
+
+import static java.lang.ClassLoader.getSystemResource;
 
 @Component
-class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
+public class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
+
+    private File arewegreenHome;
+    private AreWeGreenProperties areWeGreenProperties;
+    private static final String layoutJson = "layout.json";
+    private static final String applicationProperties = "application.properties";
 
     @Autowired
-    Environment environment;
-
-    @Autowired
-    AreWeGreenProperties properties;
+    public ConfigManager(Environment environment, AreWeGreenProperties areWeGreenProperties) {
+        arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen/");
+        this.areWeGreenProperties = areWeGreenProperties;
+    }
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        if (properties.getCreateDefaultConfigFile() && !configExists()) {
+        if (areWeGreenProperties.getCreateDefaultConfigFile() && !configExists()) {
             createDefaultConfig();
         }
     }
 
     boolean configExists() {
-        String userHome = environment.getProperty("user.home");
-        File areWeGreenConfigFolder = new File(userHome + "/arewegreen/application.properties");
-
-        return areWeGreenConfigFolder.exists();
+        return Files.exists(arewegreenHome.toPath());
     }
 
     private void createDefaultConfig() {
         try {
-            File arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen");
-            File arewegreenApplicationProperties = new File(arewegreenHome.getCanonicalPath() + "/application.properties");
-
             Files.createDirectory(arewegreenHome.toPath());
-            Files.createFile(arewegreenApplicationProperties.toPath());
 
-            FileWriter writer = new FileWriter(arewegreenApplicationProperties);
-            writer.append("startBrowserAutomatically=true");
-            writer.flush();
-            writer.close();
+            Files.copy(
+                    Paths.get(getSystemResource("defaultConfig/" + applicationProperties).toURI()),
+                    Paths.get(arewegreenHome + "/" +  applicationProperties)
+            );
 
-        } catch (IOException e) {
+            Files.copy(
+                    Paths.get(getSystemResource("defaultConfig/" + layoutJson).toURI()),
+                    Paths.get(getLayoutJsonLocation())
+            );
+
+        } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getLayoutJsonLocation() {
+        return arewegreenHome + "/" + layoutJson;
     }
 }
