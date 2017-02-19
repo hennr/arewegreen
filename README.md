@@ -29,9 +29,9 @@ Once started AreWeGreen will start a browser which opens the dashboard in a maxi
 
 ## Try the beta
 
-git clone https://github.com/hennr/arewegreen.git
-cd arewegreen
-mvn spring-boot:run
+    git clone https://github.com/hennr/arewegreen.git
+    cd arewegreen
+    mvn spring-boot:run
 
 ## License
 
