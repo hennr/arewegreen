@@ -21,6 +21,7 @@ public class ConfigManager implements ApplicationListener<ApplicationReadyEvent>
     private AreWeGreenProperties areWeGreenProperties;
     private static final String layoutJson = "layout.json";
     private static final String applicationProperties = "application.properties";
+    private static final String demoScript = "demo.sh";
 
     @Autowired
     public ConfigManager(Environment environment, AreWeGreenProperties areWeGreenProperties) {
@@ -43,11 +44,20 @@ public class ConfigManager implements ApplicationListener<ApplicationReadyEvent>
         try {
             Files.createDirectory(arewegreenHome.toPath());
 
+            // data dir
+            Files.createDirectory(Paths.get(getDataDirectoryLocation()));
+            Files.copy(
+                    Paths.get(getSystemResource("defaultConfig/data/" + demoScript).toURI()),
+                    Paths.get(arewegreenHome + "/data/" + demoScript)
+            );
+
+            // properties
             Files.copy(
                     Paths.get(getSystemResource("defaultConfig/" + applicationProperties).toURI()),
                     Paths.get(arewegreenHome + "/" +  applicationProperties)
             );
 
+            // layout.json
             Files.copy(
                     Paths.get(getSystemResource("defaultConfig/" + layoutJson).toURI()),
                     Paths.get(getLayoutJsonLocation())
@@ -56,6 +66,10 @@ public class ConfigManager implements ApplicationListener<ApplicationReadyEvent>
         } catch (IOException | URISyntaxException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getDataDirectoryLocation() {
+        return arewegreenHome.toString() + "/data";
     }
 
     public String getLayoutJsonLocation() {
