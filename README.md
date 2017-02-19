@@ -27,6 +27,11 @@ AreWeGreen will create a configuration folder in the home directory of the curre
 Here you will be able to define the layout and place scripts that will provide data for your board.
 Once started AreWeGreen will start a browser which opens the dashboard in a maximized window for you.
 
+## Try the beta
+
+git clone https://github.com/hennr/arewegreen.git
+cd arewegreen
+mvn spring-boot:run
 
 ## License
 
