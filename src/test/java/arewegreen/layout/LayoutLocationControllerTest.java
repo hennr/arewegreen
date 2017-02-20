@@ -1,7 +1,7 @@
 package arewegreen.layout;
 
 import arewegreen.AbstractRestTestClass;
-import arewegreen.config.ConfigManager;
+import arewegreen.config.DefaultFilesManager;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -23,10 +23,10 @@ public class LayoutLocationControllerTest extends AbstractRestTestClass {
         final String layoutJsonLocation = "/tmp/arewegreen/layout.json";
         String expected = new String(Files.readAllBytes(Paths.get(layoutJsonLocation)));
 
-        ConfigManager configManager = mock(ConfigManager.class);
-        when(configManager.getLayoutJsonLocation()).thenReturn(layoutJsonLocation);
+        DefaultFilesManager defaultFilesManager = mock(DefaultFilesManager.class);
+        when(defaultFilesManager.getLayoutJsonLocation()).thenReturn(layoutJsonLocation);
 
-        LayoutLocationController controller = new LayoutLocationController(configManager);
+        LayoutLocationController controller = new LayoutLocationController(defaultFilesManager);
 
         // when
         Object result = controller.exposeLayoutJsonLocationForDashbot();

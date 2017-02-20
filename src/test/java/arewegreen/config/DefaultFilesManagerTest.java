@@ -19,12 +19,12 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 
-public class ConfigManagerTest {
+public class DefaultFilesManagerTest {
 
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    ConfigManager configManager;
+    DefaultFilesManager defaultFilesManager;
 
     @Before
     public void setup() throws IOException {
@@ -34,19 +34,19 @@ public class ConfigManagerTest {
         MockEnvironment environment = new MockEnvironment();
         environment.setProperty("user.home", temporaryFolder.getRoot().getCanonicalPath());
 
-        configManager = new ConfigManager(environment, properties);
+        defaultFilesManager = new DefaultFilesManager(environment, properties);
     }
 
     @Test
     public void doesNothingIfTheAreWeGreenFolderExistsAlready() throws IOException {
         temporaryFolder.newFolder("arewegreen");
 
-        assertTrue(configManager.configExists());
+        assertTrue(defaultFilesManager.configExists());
     }
 
     @Test
     public void createsNewConfigIfNoConfigExists() throws IOException {
-        configManager.onApplicationEvent(new ApplicationReadyEvent(mock(SpringApplication.class), new String[]{}, mock(ConfigurableApplicationContext.class)));
+        defaultFilesManager.onApplicationEvent(new ApplicationReadyEvent(mock(SpringApplication.class), new String[]{}, mock(ConfigurableApplicationContext.class)));
 
         File tempFolder = temporaryFolder.getRoot();
         File applicationProperties = new File(tempFolder.getCanonicalPath() + "/arewegreen/application.properties");

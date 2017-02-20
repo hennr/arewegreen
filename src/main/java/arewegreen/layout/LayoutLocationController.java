@@ -1,6 +1,6 @@
 package arewegreen.layout;
 
-import arewegreen.config.ConfigManager;
+import arewegreen.config.DefaultFilesManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,10 +12,10 @@ import java.nio.file.Paths;
 @RestController
 public class LayoutLocationController {
 
-    private ConfigManager config;
+    private DefaultFilesManager config;
 
     @Autowired
-    public LayoutLocationController(ConfigManager config) {
+    public LayoutLocationController(DefaultFilesManager config) {
         this.config = config;
     }
 

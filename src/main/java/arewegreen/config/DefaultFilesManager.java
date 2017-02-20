@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 import static java.lang.ClassLoader.getSystemResource;
 
 @Component
-public class ConfigManager implements ApplicationListener<ApplicationReadyEvent> {
+public class DefaultFilesManager implements ApplicationListener<ApplicationReadyEvent> {
 
     private File arewegreenHome;
     private AreWeGreenProperties areWeGreenProperties;
@@ -24,7 +24,7 @@ public class ConfigManager implements ApplicationListener<ApplicationReadyEvent>
     private static final String demoScript = "demo.sh";
 
     @Autowired
-    public ConfigManager(Environment environment, AreWeGreenProperties areWeGreenProperties) {
+    public DefaultFilesManager(Environment environment, AreWeGreenProperties areWeGreenProperties) {
         arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen/");
         this.areWeGreenProperties = areWeGreenProperties;
     }

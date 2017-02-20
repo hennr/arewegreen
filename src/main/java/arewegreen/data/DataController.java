@@ -1,6 +1,6 @@
 package arewegreen.data;
 
-import arewegreen.config.ConfigManager;
+import arewegreen.config.DefaultFilesManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,11 +13,11 @@ import java.io.InputStreamReader;
 @RestController
 public class DataController {
 
-    private ConfigManager configManager;
+    private DefaultFilesManager defaultFilesManager;
 
     @Autowired
-    public DataController(ConfigManager configManager) {
-        this.configManager = configManager;
+    public DataController(DefaultFilesManager defaultFilesManager) {
+        this.defaultFilesManager = defaultFilesManager;
     }
 
     @RequestMapping("/data")
@@ -27,7 +27,7 @@ public class DataController {
             return printUsage();
         }
 
-        Process process = new ProcessBuilder().command("/bin/sh", configManager.getDataDirectoryLocation() + "/" + source).start();
+        Process process = new ProcessBuilder().command("/bin/sh", defaultFilesManager.getDataDirectoryLocation() + "/" + source).start();
         BufferedReader programOutput = new BufferedReader(new InputStreamReader(process.getInputStream()));
         process.waitFor();
         ValueDto dto = new ValueDto(programOutput.readLine());
