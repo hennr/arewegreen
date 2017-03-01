@@ -10,24 +10,24 @@ import org.springframework.stereotype.Component;
 @Component
 class BrowserStartupHook implements ApplicationListener<ApplicationReadyEvent> {
 
-    private AreWeGreenProperties configuration;
+    private AreWeGreenProperties areWeGreenProperties;
 
     private BrowserService browserService;
 
     private Environment environment;
 
     @Autowired
-    public BrowserStartupHook(AreWeGreenProperties configuration,
+    public BrowserStartupHook(AreWeGreenProperties areWeGreenProperties,
                               BrowserService browserService,
                               Environment environment) {
-        this.configuration = configuration;
+        this.areWeGreenProperties = areWeGreenProperties;
         this.browserService = browserService;
         this.environment = environment;
     }
 
     @Override
     public void onApplicationEvent(ApplicationReadyEvent event) {
-        if (configuration.getStartBrowserAutomatically()) {
+        if (areWeGreenProperties.getStartBrowserAutomatically()) {
             browserService.openUri("http://localhost:" + port());
         }
     }
