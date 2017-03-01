@@ -3,20 +3,17 @@ package arewegreen.browser;
 import arewegreen.config.AreWeGreenProperties;
 import org.junit.Test;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.core.env.Environment;
+import org.springframework.mock.env.MockEnvironment;
 
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 
 public class BrowserStartupHookTest {
 
-    AreWeGreenProperties areWeGreenProperties = mock(AreWeGreenProperties.class);
-
-    BrowserService browserServiceMock = mock(BrowserService.class);
-
-    Environment environmentMock = mock(Environment.class);
-
-    BrowserStartupHook browserStartupHook = new BrowserStartupHook(areWeGreenProperties, browserServiceMock, environmentMock);
+    private AreWeGreenProperties areWeGreenProperties = mock(AreWeGreenProperties.class);
+    private BrowserService browserServiceMock = mock(BrowserService.class);
+    private MockEnvironment environmentMock = new MockEnvironment();
+    private BrowserStartupHook browserStartupHook = new BrowserStartupHook(areWeGreenProperties, browserServiceMock, environmentMock);
 
     @Test
     public void honoursDisabledConfigSwitch() {
@@ -32,7 +29,7 @@ public class BrowserStartupHookTest {
     @Test
     public void honoursEnabledConfigSwitch() {
         given(areWeGreenProperties.getStartBrowserAutomatically()).willReturn(true);
-        given(environmentMock.getProperty("local.server.port")).willReturn("8080");
+        environmentMock.setProperty("local.server.port", "8080");
 
         // when
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
