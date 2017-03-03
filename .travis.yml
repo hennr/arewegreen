@@ -12,10 +12,9 @@ deploy:
   provider: releases
   skip_cleanup: true
   api_key:
-    secure: 0iDt+ZxARY2JLnZPO6pw2yz5SBfYYDmAz545xI5BBluGT1p2R7H0+e0D+/XkqGcuKpegHt17maON4H4qSTQabj4Ams0NxdQajSqIu9QvsPcXSAuc6NOv/HdgQf1f35birMTBSt1oPCkeuZc8Wi0xgRAFhTKTnESJzHHcYOcsVPc=
+    secure: oYYceh3P1JoaYCEKFctE90sLpIk+Yt42boRywSREEKUvCanskaLdy7kzAnf6+Fpan57MGuKoyA0eLyA3oYqF9VV+wUnPxGnt9k84v7MeIlzMHe8rsAXV0PEJ2Pb+hjxWHVYK0dL/BCnZNRqI+VAnW6+VcUj478DA1KLoZvoWCk9nP+L8hQAyOh0lzJyvM2SG2Rcmln3TW+9VTk43oAmeKZUSzkH3HD4efB3M+Jf3ptDG8adQX+3o3PA0ENqVhXDlin40WYmM+cLXoYtifOy8/LwmakaVRFVDkNfgPRTTb/5INbaHFkbK7EukZXy9a8HAtNVVewg6XUVDIej4F0p6rgrDyipXNLgwCgpJ+4wqTTyIwu3YJCKAlpOu1QBZE7pKpkoUBRAIv5eJKTJADPxdVm9P/gtAWhYbml6BKIHHHkATRknQOR1nWfnvnK3GqX2yRpcNCNnWrYFHsob9RB0c/9527ALTCs/GDj5+EtWjW3TPNa7MFCRr02DHBdcA6HxuIo6yHE3MTt6E59wBmuSOUX/78SteExY/JQTEV2GPEHVWCe4iBkxx0OxHVxx6c3Qn9N9HCiv9H0puWj/oa37bwTSV2utjY3repNHE9y+/ydZEQ9nLorNMkrySsDjc5fkRWUMljC669MCNBOXvfK8EzY7tF+SMXy9bzoS1tijZ35A=
   file:
     - "${RELEASE}"
   on:
     repo: hennr/arewegreen
     tags: true
-    
