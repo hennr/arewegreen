@@ -79,16 +79,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
-                    <finalName>${project.artifactId}</finalName>
                     <executable>true</executable>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
-                <configuration>
-                    <finalName>this-is-not-the-spring-boot-fat-jar</finalName>
                 </configuration>
             </plugin>
 
