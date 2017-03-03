@@ -4,3 +4,17 @@ jdk: oraclejdk8
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+before_deploy:
+    - export RELEASE=$(ls target/arewegreen*.jar)
+
+deploy:
+  provider: releases
+  api_key:
+    secure: 0iDt+ZxARY2JLnZPO6pw2yz5SBfYYDmAz545xI5BBluGT1p2R7H0+e0D+/XkqGcuKpegHt17maON4H4qSTQabj4Ams0NxdQajSqIu9QvsPcXSAuc6NOv/HdgQf1f35birMTBSt1oPCkeuZc8Wi0xgRAFhTKTnESJzHHcYOcsVPc=
+  file:
+    - "${RELEASE}"
+  on:
+    repo: hennr/arewegreen
+    tags: true
+    
