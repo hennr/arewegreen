@@ -1,22 +1,20 @@
 package arewegreen.layout;
 
-import arewegreen.AbstractRestTestClass;
-import arewegreen.config.DefaultFilesManager;
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import org.junit.Test;
+
+import arewegreen.AbstractRestTestClass;
+import arewegreen.config.DefaultFilesManager;
 
 public class LayoutLocationControllerTest extends AbstractRestTestClass {
 
-    @Ignore("meh, the file does not get written because of the settings in the test/resource/application.properties." +
-            "I need an integration test abstract test which writes files prefixed with /tmp to test file system opertations properly")
     @Test
     public void servesTheDefaultLayoutJson() throws IOException {
         // given
@@ -29,10 +27,10 @@ public class LayoutLocationControllerTest extends AbstractRestTestClass {
         LayoutLocationController controller = new LayoutLocationController(defaultFilesManager);
 
         // when
-        Object result = controller.exposeLayoutJsonLocationForDashbot();
+        String result = controller.exposeLayoutJsonLocationForDashbot();
 
         // then
-        assertEquals(result, expected);
+        assertEquals(expected, result);
     }
 
 }
