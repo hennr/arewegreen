@@ -10,10 +10,10 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import arewegreen.AbstractRestTestClass;
+import arewegreen.AbstractTestClass;
 import arewegreen.config.DefaultFilesManager;
 
-public class LayoutLocationControllerTest extends AbstractRestTestClass {
+public class LayoutLocationControllerTest extends AbstractTestClass {
 
     @Test
     public void servesTheDefaultLayoutJson() throws IOException {

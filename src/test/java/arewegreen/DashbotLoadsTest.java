@@ -4,7 +4,7 @@ import static io.restassured.RestAssured.get;
 
 import org.junit.Test;
 
-public class DashbotLoadsTest extends AbstractRestTestClass {
+public class DashbotLoadsTest extends AbstractTestClass {
 
     @Test
     public void appStarts() {

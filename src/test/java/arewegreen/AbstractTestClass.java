@@ -20,9 +20,9 @@ import io.restassured.RestAssured;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, properties = "user.home=${java.io.tmpdir}")
-public class AbstractRestTestClass {
+public class AbstractTestClass {
 
-    private static Logger log = LoggerFactory.getLogger(AbstractRestTestClass.class);
+    private static Logger log = LoggerFactory.getLogger(AbstractTestClass.class);
 
     @LocalServerPort
     private int port;
