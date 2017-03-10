@@ -1,13 +1,7 @@
 package arewegreen;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Date;
-
-import org.junit.After;
+import io.restassured.RestAssured;
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -16,7 +10,12 @@ import org.springframework.boot.context.embedded.LocalServerPort;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.restassured.RestAssured;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Date;
+
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT, properties = "user.home=${java.io.tmpdir}")
@@ -32,8 +31,8 @@ public class AbstractTestClass {
         RestAssured.port = port;
     }
 
-    @After
-    public void cleanUp() {
+    @AfterClass
+    public static void cleanUp() {
         File tempDir = new File(System.getProperty("java.io.tmpdir") + "/arewegreen/");
         try {
             String newPath = tempDir + " - " + new Date();
