@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -24,7 +24,7 @@ public class DefaultFilesManagerTest {
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    DefaultFilesManager defaultFilesManager;
+    private DefaultFilesManager defaultFilesManager;
 
     @Before
     public void setup() throws IOException {
@@ -55,6 +55,6 @@ public class DefaultFilesManagerTest {
         FileInputStream applicationPropertiesStream = new FileInputStream(applicationProperties);
         Properties properties = new Properties();
         properties.load(applicationPropertiesStream);
-        assertThat(properties.getProperty("startBrowserAutomatically"), equalTo("true"));
+        assertThat(properties.getProperty("startBrowserAutomatically").isEmpty(), is(false));
     }
 }
