@@ -7,6 +7,7 @@ import org.junit.rules.TemporaryFolder;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.mock.env.MockEnvironment;
 
 import java.io.File;
@@ -34,7 +35,7 @@ public class DefaultFilesManagerTest {
         MockEnvironment environment = new MockEnvironment();
         environment.setProperty("user.home", temporaryFolder.getRoot().getCanonicalPath());
 
-        defaultFilesManager = new DefaultFilesManager(environment, properties);
+        defaultFilesManager = new DefaultFilesManager(environment, properties, new DefaultResourceLoader());
     }
 
     @Test

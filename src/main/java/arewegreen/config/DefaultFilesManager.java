@@ -4,29 +4,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.core.env.Environment;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
-import static java.lang.ClassLoader.getSystemResource;
 
 @Component
 public class DefaultFilesManager implements ApplicationListener<ApplicationReadyEvent> {
 
     private File arewegreenHome;
     private AreWeGreenProperties areWeGreenProperties;
+    private ResourceLoader resourceLoader;
     private static final String layoutJson = "layout.json";
     private static final String applicationProperties = "application.properties";
     private static final String demoScript = "demo.sh";
 
     @Autowired
-    public DefaultFilesManager(Environment environment, AreWeGreenProperties areWeGreenProperties) {
+    public DefaultFilesManager(Environment environment, AreWeGreenProperties areWeGreenProperties, ResourceLoader resourceLoader) {
         arewegreenHome = new File(environment.getProperty("user.home") + "/arewegreen/");
         this.areWeGreenProperties = areWeGreenProperties;
+        this.resourceLoader = resourceLoader;
     }
 
     @Override
@@ -47,23 +47,23 @@ public class DefaultFilesManager implements ApplicationListener<ApplicationReady
             // data dir
             Files.createDirectory(Paths.get(getDataDirectoryLocation()));
             Files.copy(
-                    Paths.get(getSystemResource("defaultConfig/data/" + demoScript).toURI()),
+                    resourceLoader.getResource("classpath:defaultConfig/data/" + demoScript).getInputStream(),
                     Paths.get(arewegreenHome + "/data/" + demoScript)
             );
 
             // properties
             Files.copy(
-                    Paths.get(getSystemResource("defaultConfig/" + applicationProperties).toURI()),
+                    resourceLoader.getResource("classpath:defaultConfig/" + applicationProperties).getInputStream(),
                     Paths.get(arewegreenHome + "/" +  applicationProperties)
             );
 
             // layout.json
             Files.copy(
-                    Paths.get(getSystemResource("defaultConfig/" + layoutJson).toURI()),
+                    resourceLoader.getResource("classpath:defaultConfig/" + layoutJson).getInputStream(),
                     Paths.get(getLayoutJsonLocation())
             );
 
-        } catch (IOException | URISyntaxException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
