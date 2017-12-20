@@ -2,3 +2,6 @@
 .project
 *.iml
 target/
+npm-debug.log*
+node_modules/
+node/

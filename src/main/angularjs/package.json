@@ -1,0 +1,24 @@
+{
+  "scripts": {
+    "eslint": "eslint --fix app/",
+    "stylus": "stylus app/stylesheets/styl/app.styl --out ../resources/static/",
+    "bundle": "webpack",
+    "test": "npm-run-all eslint stylus bundle*"
+  },
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-angular": "^0.5.0",
+    "eslint-plugin-angular": "^3.1.1",
+    "exports-loader": "0.6.2",
+    "imports-loader": "0.6.3",
+    "lodash": "4.8.2",
+    "node-libs-browser": "0.5.3",
+    "npm-run-all": "^4.1.2",
+    "stylus": "0.54.5",
+    "time-grunt": "1.3.0",
+    "webpack": "3.8.1"
+  },
+  "dependencies": {
+    "angular": "1.4.9"
+  }
+}
