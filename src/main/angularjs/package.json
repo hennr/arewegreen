@@ -1,7 +1,7 @@
 {
   "scripts": {
     "eslint": "eslint --fix app/",
-    "stylus": "stylus app/stylesheets/styl/app.styl --out ../resources/static/",
+    "stylus": "stylus --sourcemap app/stylesheets/styl/app.styl --out ../resources/static/",
     "bundle": "webpack",
     "test": "npm-run-all eslint stylus bundle*"
   },

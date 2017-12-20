@@ -112,6 +112,7 @@
                 <configuration>
                     <excludes>
                         <exclude>**/*.js.map</exclude>
+                        <exclude>**/*.css.map</exclude>
                     </excludes>
                 </configuration>
             </plugin>
