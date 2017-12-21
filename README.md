@@ -36,7 +36,7 @@ This feature can be disabled in the settings.
 ## Demo
 
 A live demo can be found here: https://arewegreen.herokuapp.com/
-Please give it a sec to start the service.
+Please give heroku a sec to start the service.
 
 ## License
 
