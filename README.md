@@ -20,18 +20,23 @@ The result could look like this:
 
 ## Get started
 
-AreWeGreen is not yet finished. Here is the plan though:
+Note: AreWeGreen is currently in alpha state.
 
-To run AreWeGreen you simply need to fetch a release and add the executable to your autostart config.
-AreWeGreen will create a configuration folder in the home directory of the current user automatically.
-Here you will be able to define the layout and place scripts that will provide data for your board.
-Once started AreWeGreen will start a browser which opens the dashboard in a maximized window for you.
-
-## Try the beta
+Fetch [a release](https://github.com/hennr/arewegreen/releases) or build it from source:
 
     git clone https://github.com/hennr/arewegreen.git
     cd arewegreen
     mvn spring-boot:run
+
+When run AreWeGreen will create a configuration folder (~/arewegreen) in the home directory of the current user.
+Here you can define the layout and place scripts that will provide data for your board.
+AreWeGreen will also start a browser automatically which opens the dashboard in a maximized window for you.
+This feature can be disabled in the settings.
+
+## Demo
+
+A live demo can be found here: https://arewegreen.herokuapp.com/
+Please give it a sec to start the service.
 
 ## License
 
