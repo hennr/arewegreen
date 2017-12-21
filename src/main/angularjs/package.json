@@ -3,7 +3,9 @@
     "eslint": "eslint --fix app/",
     "stylus": "stylus --sourcemap app/stylesheets/styl/app.styl --out ../resources/static/",
     "bundle": "webpack",
-    "test": "npm-run-all eslint stylus bundle*"
+    "copy:angular": "cp node_modules/angular/angular.min.js ../resources/static/",
+    "copy:angular-map": "cp node_modules/angular/angular.min.js.map ../resources/static/",
+    "test": "npm-run-all eslint stylus bundle* --parallel copy:*"
   },
   "devDependencies": {
     "eslint": "^4.13.1",

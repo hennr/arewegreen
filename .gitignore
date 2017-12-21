@@ -5,3 +5,5 @@ target/
 npm-debug.log*
 node_modules/
 node/
+angular.min.js
+angular.min.js.map
