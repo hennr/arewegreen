@@ -1,6 +1,6 @@
 [
 	[
-		{ "visual": "number", "class": "storm", "title": "the number of the beast",  "xhr": "/data?source=demo.sh", "xhrValue": "value", "xhrInterval": 10}
+		{ "visual": "number", "class": "storm", "title": "the lucky number",  "xhr": "/data?source=demo.sh", "xhrValue": "value", "xhrInterval": 10}
 	],
 	[
 		{ "visual": "number", "class": "comets", "build": "green", "value": "OK", "title": "Build" },
