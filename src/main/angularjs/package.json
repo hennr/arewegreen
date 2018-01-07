@@ -11,8 +11,6 @@
     "eslint": "^4.13.1",
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^3.1.1",
-    "exports-loader": "0.6.2",
-    "imports-loader": "0.6.3",
     "lodash": "4.8.2",
     "node-libs-browser": "0.5.3",
     "npm-run-all": "^4.1.2",
