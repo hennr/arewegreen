@@ -17,6 +17,7 @@
     "stylus": "0.54.5",
     "webpack": "3.8.1"
   },
+  "license": "GPL-3.0+",
   "dependencies": {
     "angular": "1.4.9"
   }
