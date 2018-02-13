@@ -7,3 +7,4 @@ node_modules/
 node/
 angular.min.js
 angular.min.js.map
+.cache/
