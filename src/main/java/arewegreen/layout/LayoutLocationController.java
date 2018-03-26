@@ -20,7 +20,7 @@ public class LayoutLocationController {
         this.config = config;
     }
 
-    @GetMapping("/layout")
+    @GetMapping("/layout.json")
     String exposeLayoutJsonLocationForDashbot() throws IOException {
         return new String(Files.readAllBytes(Paths.get(config.getLayoutJsonLocation())));
     }
