@@ -1624,9 +1624,9 @@ locate-path@^2.0.0:
     p-locate "^2.0.0"
     path-exists "^3.0.0"
 
-lodash@4.8.2:
-  version "4.8.2"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.8.2.tgz#478ad7ff648c3c71a2f6108e032c5c0cc40747df"
+lodash@4.17.5:
+  version "4.17.5"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.5.tgz#99a92d65c0272debe8c96b6057bc8fbfa3bed511"
 
 lodash@^4.14.0, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.4"

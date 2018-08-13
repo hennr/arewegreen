@@ -11,7 +11,7 @@
     "eslint": "^4.13.1",
     "eslint-config-angular": "^0.5.0",
     "eslint-plugin-angular": "^3.1.1",
-    "lodash": "4.8.2",
+    "lodash": "4.17.5",
     "node-libs-browser": "0.5.3",
     "npm-run-all": "^4.1.2",
     "stylus": "0.54.5",
