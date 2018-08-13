@@ -1,12 +1,15 @@
 package arewegreen.data;
 
-import arewegreen.config.DefaultFilesManager;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import arewegreen.config.DefaultFilesManager;
 
 @Service
 class DataService {
@@ -16,8 +19,11 @@ class DataService {
 
     Object runCommand(String source) throws IOException, InterruptedException {
         Process process = new ProcessBuilder().command("/bin/sh", defaultFilesManager.getDataDirectoryLocation() + "/" + source).start();
+        if (!process.waitFor(2, SECONDS)) {
+            process.destroyForcibly();
+            return new ValueDto("?");
+        }
         BufferedReader programOutput = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        process.waitFor();
         ValueDto dto = new ValueDto(programOutput.readLine());
         process.destroy();
         return dto;

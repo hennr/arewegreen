@@ -38,7 +38,13 @@ module.exports = {
           .success(function(data) {
             newValue = eval('data.' + $scope.visual.xhrValue);
 
-            if (!isNaN(newValue)) {
+            if (newValue === '?') {
+              $scope.value = '?';
+              $scope.visual.loading = false;
+              $scope.visual.build = 'red';
+            }
+
+            else if (!isNaN(newValue)) {
               $scope.value = newValue;
               _format();
               if ($scope.visual.green && $scope.visual.red) {
