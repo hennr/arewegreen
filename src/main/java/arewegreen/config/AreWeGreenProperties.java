@@ -11,6 +11,7 @@ public class AreWeGreenProperties {
 
     private boolean startBrowserAutomatically = true;
     private boolean createDefaultConfigFile = true;
+    private int scriptTimeoutInSeconds = 2;
 
     public boolean getStartBrowserAutomatically() {
         return startBrowserAutomatically;
@@ -18,6 +19,14 @@ public class AreWeGreenProperties {
 
     public void setStartBrowserAutomatically(boolean startBrowserAutomatically) {
         this.startBrowserAutomatically = startBrowserAutomatically;
+    }
+
+    public int getScriptTimeoutInSeconds() {
+        return scriptTimeoutInSeconds;
+    }
+
+    public void setScriptTimeoutInSeconds(final int scriptTimeoutInSeconds) {
+        this.scriptTimeoutInSeconds = scriptTimeoutInSeconds;
     }
 
     public boolean getCreateDefaultConfigFile() {
