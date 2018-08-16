@@ -25,7 +25,7 @@ public class AreWeGreenProperties {
         return scriptTimeoutInSeconds;
     }
 
-    public void setScriptTimeoutInSeconds(final int scriptTimeoutInSeconds) {
+    public void setScriptTimeoutInSeconds(int scriptTimeoutInSeconds) {
         this.scriptTimeoutInSeconds = scriptTimeoutInSeconds;
     }
 
