@@ -40,8 +40,8 @@ public class AbstractTestClass {
         Properties properties = new Properties();
         properties.load(applicationPropertiesStream);
 
-        assertThat(properties.getProperty("startBrowserAutomatically").isEmpty(), is(false));
-        assertThat(properties.getProperty("scriptTimeoutInSeconds").isEmpty(), is(false));
+        assertThat(properties.getProperty("startBrowserAutomatically"), is("false"));
+        assertThat(properties.getProperty("scriptTimeoutInSeconds"), is("2"));
 
     }
 }
