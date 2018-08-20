@@ -21,5 +21,4 @@ public class AbstractTestClass {
     public void setUp() {
         RestAssured.port = port;
     }
-
 }
