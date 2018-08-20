@@ -7,9 +7,7 @@ import static org.mockito.Mockito.when;
 import java.io.File;
 import java.io.IOException;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.test.util.ReflectionTestUtils;
 
 import arewegreen.config.AreWeGreenProperties;
 import arewegreen.config.DefaultFilesManager;
