@@ -32,13 +32,13 @@ public class DataServiceTest {
     }
 
     @Test
-    public void startsTheScriptInTheTimeSet() throws IOException, InterruptedException {
+    public void startsGivenScriptAndReturnsOutput() throws IOException, InterruptedException {
         //given
         String testDataDir = new File("src/test/resources/data").getAbsolutePath();
         when(defaultFilesManager.getDataDirectoryLocation()).thenReturn(testDataDir);
 
         //when
-        ValueDto result = dataService.runCommand("justInTime.sh");
+        ValueDto result = dataService.runCommand("success.sh");
 
         //then
         assertThat(result).isEqualTo(new ValueDto("success"));
