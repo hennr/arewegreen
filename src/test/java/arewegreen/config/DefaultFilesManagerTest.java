@@ -1,5 +1,16 @@
 package arewegreen.config;
 
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.mock;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -10,16 +21,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.mock.env.MockEnvironment;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-
 public class DefaultFilesManagerTest {
 
     @Rule
@@ -29,20 +30,18 @@ public class DefaultFilesManagerTest {
 
     @Before
     public void setup() throws IOException {
-        AreWeGreenProperties properties = new AreWeGreenProperties();
-        properties.setCreateDefaultConfigFile(true);
-
         MockEnvironment environment = new MockEnvironment();
         environment.setProperty("user.home", temporaryFolder.getRoot().getCanonicalPath());
 
-        defaultFilesManager = new DefaultFilesManager(environment, properties, new DefaultResourceLoader());
+        defaultFilesManager = new DefaultFilesManager(environment, new DefaultResourceLoader());
     }
 
     @Test
     public void doesNothingIfTheAreWeGreenFolderExistsAlready() throws IOException {
+        // given
         temporaryFolder.newFolder("arewegreen");
-
-        assertTrue(defaultFilesManager.configExists());
+        // expect
+        assertFalse(defaultFilesManager.needsConfig());
     }
 
     @Test
