@@ -1,15 +1,14 @@
 package arewegreen.config;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Properties;
+import java.util.UUID;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -26,36 +25,77 @@ public class DefaultFilesManagerTest {
     @Rule
     public TemporaryFolder temporaryFolder = new TemporaryFolder();
 
-    private DefaultFilesManager defaultFilesManager;
+    private MockEnvironment environment = new MockEnvironment();
+    private DefaultFilesManager defaultFilesManager = new DefaultFilesManager(environment, new DefaultResourceLoader());
 
     @Before
-    public void setup() throws IOException {
-        MockEnvironment environment = new MockEnvironment();
-        environment.setProperty("user.home", temporaryFolder.getRoot().getCanonicalPath());
-
-        defaultFilesManager = new DefaultFilesManager(environment, new DefaultResourceLoader());
-    }
-
-    @Test
-    public void doesNothingIfTheAreWeGreenFolderExistsAlready() throws IOException {
-        // given
-        temporaryFolder.newFolder("arewegreen");
-        // expect
-        assertFalse(defaultFilesManager.needsConfig());
+    public void createNewTemporaryUserHomeFolder() throws IOException {
+        environment.setProperty("user.home", temporaryFolder.newFolder(UUID.randomUUID().toString()).getCanonicalPath());
     }
 
     @Test
     public void createsNewConfigIfNoConfigExists() throws IOException {
-        defaultFilesManager.onApplicationEvent(new ApplicationReadyEvent(mock(SpringApplication.class), new String[]{}, mock(ConfigurableApplicationContext.class)));
+        defaultFilesManager.onApplicationEvent(new ApplicationReadyEvent(mock(SpringApplication.class), new String[] {}, mock(ConfigurableApplicationContext.class)));
 
-        File tempFolder = temporaryFolder.getRoot();
-        File applicationProperties = new File(tempFolder.getCanonicalPath() + "/arewegreen/application.properties");
+        File applicationProperties = new File(environment.getProperty("user.home") + "/arewegreen/application.properties");
 
-        assertTrue(applicationProperties.exists());
+        assertThat(applicationProperties.exists()).isTrue();
         FileInputStream applicationPropertiesStream = new FileInputStream(applicationProperties);
         Properties properties = new Properties();
         properties.load(applicationPropertiesStream);
-        assertThat(properties.getProperty("startBrowserAutomatically").isEmpty(), is(false));
-        assertThat(properties.getProperty("scriptTimeoutInSeconds"), is("2"));
+        assertThat(properties.getProperty("startBrowserAutomatically").isEmpty()).isFalse();
+        assertThat(properties.getProperty("scriptTimeoutInSeconds")).isEqualTo("2");
+    }
+
+    @Test
+    public void doesNothingIfUserConfigIsComplete() {
+        // when
+        defaultFilesManager.onApplicationEvent(mock(ApplicationReadyEvent.class));
+
+        // then
+        assertThat(defaultFilesManager.userConfigIsIncomplete()).isFalse();
+    }
+
+    @Test
+    public void determinesIncompleteUserConfiguration() throws IOException {
+        givenAnIncompleteDefaultConfig();
+        // then
+        assertThat(defaultFilesManager.userConfigIsIncomplete()).isTrue();
+    }
+
+    @Test
+    public void updatesUserConfigOnNewDefaultSettings() throws IOException {
+        File properties = givenAnIncompleteDefaultConfig();
+        givenAnIncompleteDefaultConfig();
+
+        // when
+        defaultFilesManager.onApplicationEvent(mock(ApplicationReadyEvent.class));
+
+        // then
+        FileInputStream applicationPropertiesStream = new FileInputStream(properties);
+        Properties props = new Properties();
+        props.load(applicationPropertiesStream);
+
+        assertThat(props.getProperty("scriptTimeoutInSeconds")).isEqualTo("666");
+        assertThat(props.getProperty("startBrowserAutomatically")).isEqualTo("false");
+    }
+
+    private File givenAnIncompleteDefaultConfig() throws IOException {
+        // create fresh config
+        defaultFilesManager.onApplicationEvent(mock(ApplicationReadyEvent.class));
+
+        // alter config
+        File applicationProperties = new File(environment.getProperty("user.home") + "/arewegreen/application.properties");
+        FileInputStream applicationPropertiesStream = new FileInputStream(applicationProperties);
+        Properties properties = new Properties();
+        properties.load(applicationPropertiesStream);
+        // remove one config value
+        properties.remove("startBrowserAutomatically");
+        // alter one config value
+        properties.put("scriptTimeoutInSeconds", "666");
+        FileOutputStream writer = new FileOutputStream(applicationProperties);
+        properties.store(writer, "");
+        writer.close();
+        return applicationProperties.getCanonicalFile();
     }
 }

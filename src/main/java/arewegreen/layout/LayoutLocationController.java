@@ -2,7 +2,6 @@ package arewegreen.layout;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +21,6 @@ public class LayoutLocationController {
 
     @GetMapping("/layout.json")
     String exposeLayoutJsonLocationForDashbot() throws IOException {
-        return new String(Files.readAllBytes(Paths.get(config.getLayoutJsonLocation())));
+        return new String(Files.readAllBytes(config.getLayoutJsonLocation()));
     }
 }
