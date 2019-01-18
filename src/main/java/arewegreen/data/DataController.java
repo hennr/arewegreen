@@ -1,9 +1,10 @@
 package arewegreen.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 
@@ -13,14 +14,14 @@ public class DataController {
     @Autowired
     DataService dataService;
 
-    @RequestMapping("/data")
-    public Object runShellScript(@RequestParam(value = "source", required = false) String source) throws IOException, InterruptedException {
+    @GetMapping("/data")
+    public Mono<Object> runShellScript(@RequestParam(value = "source", required = false) String source) throws IOException, InterruptedException {
 
         if (source == null || source.isEmpty()) {
-            return printUsage();
+            return Mono.just(printUsage());
         }
 
-        return dataService.runCommand(source);
+        return Mono.just(dataService.runCommand(source));
     }
 
     private ValueDto printUsage() {

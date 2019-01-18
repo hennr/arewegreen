@@ -1,17 +1,16 @@
 package arewegreen.layout;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import arewegreen.AbstractTestClass;
+import arewegreen.config.DefaultFilesManager;
+import org.junit.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import org.junit.Test;
-
-import arewegreen.AbstractTestClass;
-import arewegreen.config.DefaultFilesManager;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class LayoutLocationControllerTest extends AbstractTestClass {
 
@@ -27,10 +26,9 @@ public class LayoutLocationControllerTest extends AbstractTestClass {
         LayoutLocationController controller = new LayoutLocationController(defaultFilesManager);
 
         // when
-        String result = controller.exposeLayoutJsonLocationForDashbot();
+        String result = controller.exposeLayoutJsonLocationForDashbot().block();
 
         // then
         assertEquals(expected, result);
     }
-
 }

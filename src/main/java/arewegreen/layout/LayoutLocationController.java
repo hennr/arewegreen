@@ -1,13 +1,13 @@
 package arewegreen.layout;
 
-import java.io.IOException;
-import java.nio.file.Files;
-
+import arewegreen.config.DefaultFilesManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Mono;
 
-import arewegreen.config.DefaultFilesManager;
+import java.io.IOException;
+import java.nio.file.Files;
 
 @RestController
 public class LayoutLocationController {
@@ -20,7 +20,7 @@ public class LayoutLocationController {
     }
 
     @GetMapping("/layout.json")
-    String exposeLayoutJsonLocationForDashbot() throws IOException {
-        return new String(Files.readAllBytes(config.getLayoutJsonLocation()));
+    Mono<String> exposeLayoutJsonLocationForDashbot() throws IOException {
+        return Mono.just(new String(Files.readAllBytes(config.getLayoutJsonLocation())));
     }
 }
