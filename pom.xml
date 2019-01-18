@@ -48,12 +48,6 @@
             <version>2.23.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>rest-assured</artifactId>
-            <version>3.0.7</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

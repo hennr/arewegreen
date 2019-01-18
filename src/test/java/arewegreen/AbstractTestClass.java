@@ -1,24 +1,14 @@
 package arewegreen;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
-
-import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import io.restassured.RestAssured;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT, properties = "user.home=${java.io.tmpdir}")
+@SpringBootTest(webEnvironment = NONE, properties = "user.home=${java.io.tmpdir}")
+
 public class AbstractTestClass {
-
-    @LocalServerPort
-    private int port;
-
-    @Before
-    public void setUp() {
-        RestAssured.port = port;
-    }
+    // Avoids using the users home dir for while running test but use java.io.tmpdir instead.
 }
