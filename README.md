@@ -36,7 +36,7 @@ This feature can be disabled in the settings.
 ## Demo
 
 A live demo can be found here: https://arewegreen.herokuapp.com/
-Please give heroku a sec to start the service.
+Please give heroku a sec or two (30) to start up.
 
 ## License
 
@@ -44,6 +44,13 @@ AreWeGreen is licensed under the GPLv3+.
 
 It includes [dashbot](https://github.com/sbstnmsch/dashbot/) (src/main/resources/static) which is licensed under the [MIT License](LICENSE-dashbot).
 
+
+</br></br>
+
+## Thanks
+
+I want to thank [travis](https://travis-ci.org/) and [codecov.io](https://codecov.io/) for their free open source plans!
+AreweGreen is also supported by [jetBrains](https://www.jetbrains.com/?from=arewegreen) with an open source license!
 
 </br></br>
 <p align="center">Made with ♥ in Berlin</p>
