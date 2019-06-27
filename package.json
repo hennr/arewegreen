@@ -1,19 +1,23 @@
 {
   "scripts": {
     "bundle": "parcel build",
-    "start": "CHOKIDAR_USEPOLLING=true parcel src/main/js/index.html"
+    "start": "CHOKIDAR_USEPOLLING=true parcel src/main/js/index.html",
+    "test": "jest"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
     "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "babel-jest": "^24.8.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.8.0",
     "npm-run-all": "^4.1.2",
     "parcel": "^1.12.3",
     "stylus": "^0.54.5"
   },
   "license": "GPL-3.0+",
   "dependencies": {
-    "app": "^0.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   }
