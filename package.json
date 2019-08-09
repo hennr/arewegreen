@@ -2,6 +2,7 @@
   "scripts": {
     "bundle": "parcel build",
     "start": "CHOKIDAR_USEPOLLING=true parcel src/main/js/index.html",
+    "watch": "CHOKIDAR_USEPOLLING=true parcel watch src/main/js/index.html",
     "test": "jest"
   },
   "devDependencies": {
