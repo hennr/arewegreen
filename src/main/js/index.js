@@ -5,8 +5,13 @@ import Tile from "./components/Tile";
 
 const App = () => (
     <React.Fragment>
-          <Tile value={"42"} text={"foo"}/>
-          <Tile value={"666"} text={"bar"}/>
+        <div className={"row"}>
+            <Tile value={"42"} text={"foo"}/>
+            <Tile value={"42"} text={"foo"}/>
+        </div>
+        <div className={"row"}>
+            <Tile value={"666"} text={"bar"}/>
+        </div>
     </React.Fragment>
 );
 
