@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "bundle": "parcel build",
-    "start": "CHOKIDAR_USEPOLLING=true parcel src/main/js/index.html",
-    "watch": "CHOKIDAR_USEPOLLING=true parcel watch src/main/js/index.html",
+    "bundle": "parcel build index.js --no-cache --out-dir ../../../target/classes/static/js --out-file bundle --public-url /js",
+    "start": "CHOKIDAR_USEPOLLING=true parcel dev.html",
+    "watch": "CHOKIDAR_USEPOLLING=true parcel watch dev.html",
     "test": "jest"
   },
   "devDependencies": {

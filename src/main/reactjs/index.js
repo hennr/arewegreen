@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./app/stylesheets/styl/app.styl";
+import "./styl/app.styl";
 import Tile from "./components/Tile";
 
 const App = () => (

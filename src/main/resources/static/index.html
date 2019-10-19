@@ -1,39 +1,15 @@
-<!doctype html>
-<html ng-app="dashbot">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8" />
-  <title>AreWeGreen</title>
-  <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="app.css" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <meta name="theme-color" content="#ffffff">
+    <title>AreWeGreen?</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="stylesheet" href="/js/bundle.css"/>
 </head>
-
-<body>
-  <div class="dashbot" ng-controller="dashbot.controller">
-    <div class="dashbot__row dashbot-row__{{grid.length}}" ng-repeat="row in grid">
-      <div class="dashbot__col dashbot-col__{{row.length}}" ng-repeat="col in row">
-        <div class="dashbot-col__visual {{col.loading ? 'loading' : ''}} {{col.class}} {{!col.build ? 'dashbot-col-visual__none' : ''}}" style="{{col.style}}">
-          <div class="dashbot-col-visual__valign build dashbot-col-visual__{{col.build}}">
-            <div class="dashbot-col-visual-valign__data">
-
-              <dashbot-visual-number visual="col"></dashbot-visual-number>
-              <dashbot-visual-buildchain visual="col"></dashbot-visual-buildchain>
-              <dashbot-visual-graph visual="col"></dashbot-visual-graph>
-              <dashbot-visual-weather visual="col"></dashbot-visual-weather>
-
-              <div ng-if="! col.visual"><span class="value bigFont">{{col.value}}</span><br />Unknown visual</div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script type="text/javascript" src="angular.min.js" charset="utf-8"></script>
-  <script type="text/javascript" src="dashbot.bundle.js" charset="utf-8" defer></script>
-
+<body style="margin: 0">
+<div id="app" style="background-color: black; display: flex; flex-direction: column; position: absolute; left: 0; right: 0; top: 0; bottom: 0"></div>
+<script src="/js/bundle.js"></script>
 </body>
 </html>
