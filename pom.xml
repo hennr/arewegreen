@@ -52,6 +52,23 @@
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/reactjs</directory>
+                            <includes>
+                                <include>.cache/</include>
+                                <include>node/</include>
+                                <include>node_modules/</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
             <!-- check for dependency updates via mvn versions:display-dependency-updates -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
