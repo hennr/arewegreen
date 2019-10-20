@@ -63,6 +63,7 @@
                                 <include>.cache/</include>
                                 <include>node/</include>
                                 <include>node_modules/</include>
+                                <include>dist/</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>

@@ -8,4 +8,4 @@ node/
 angular.min.js
 angular.min.js.map
 .cache/
-/dist/
+dist/
