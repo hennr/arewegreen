@@ -6,15 +6,17 @@
     "test": "jest"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^24.8.0",
+    "babel-jest": "^24.9.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "jest": "^24.8.0",
+    "jest": "^24.9.0",
     "jest-environment-enzyme": "^7.0.2",
     "jest-enzyme": "^7.0.2",
+    "mockserver-client": "^5.6.1",
+    "mockserver-node": "^5.6.1",
     "npm-run-all": "^4.1.2",
     "parcel": "^1.12.3",
     "stylus": "^0.54.5"
@@ -25,7 +27,9 @@
     "react-dom": "^16.8.6"
   },
   "jest": {
-    "setupFilesAfterEnv": ["jest-enzyme"],
+    "setupFilesAfterEnv": [
+      "jest-enzyme"
+    ],
     "testEnvironment": "enzyme"
   }
 }
