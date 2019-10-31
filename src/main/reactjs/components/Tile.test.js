@@ -1,9 +1,33 @@
 import Tile from "./Tile";
+import {mount} from "enzyme";
+import * as client from "../data/AreWeGreenClient";
+
+jest.mock("../data/AreWeGreenClient");
 
 describe("Tile", () => {
-    it('renders given values', () => {
-        const rendered = shallow(<Tile value={"42"} text={"foo"}/>);
-        expect(rendered.find("[data-test-value]").text()).toEqual('42');
-        expect(rendered.find("[data-test-text]").text()).toEqual('foo');
+
+    test('shows spinner on component initialisation', () => {
+        // given
+        const promise = Promise.reject();
+        client.fetchData.mockImplementation(() => promise);
+        // when
+        const tile = mount(<Tile dataSource={"BAM"} text={"bam"}/>);
+        // then
+        return client.fetchData().catch(() => {
+            expect(tile.find(".spinner")).toExist();
+        });
+    });
+
+    test('renders fetched data on mount', () => {
+        // given
+        const expectedResult = "666";
+        const promise = Promise.resolve({value: expectedResult});
+        client.fetchData.mockImplementation(() => promise);
+        // when
+        const tile = mount(<Tile dataSource={"getMe"} text={"foo"}/>);
+        // then
+        return client.fetchData().then(() => {
+            expect(tile.find("[data-test-value]").text()).toEqual(expectedResult);
+        });
     });
 });
