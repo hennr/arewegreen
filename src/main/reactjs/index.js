@@ -6,11 +6,11 @@ import Tile from "./components/Tile";
 const App = () => (
     <React.Fragment>
         <div className={"row"}>
-            <Tile value={"42"} text={"foo"}/>
-            <Tile value={"42"} text={"foo"}/>
+            <Tile dataSource={"data?source=demo.sh"} text={"foo"}/>
+            <Tile dataSource={"data?source=demo.sh"} text={"foo"}/>
         </div>
         <div className={"row"}>
-            <Tile value={"666"} text={"bar"}/>
+            <Tile dataSource={"data?source=demo.sh"} text={"bar"}/>
         </div>
     </React.Fragment>
 );

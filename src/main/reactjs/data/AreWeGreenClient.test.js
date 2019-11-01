@@ -4,7 +4,7 @@ import {fetchData} from "./AreWeGreenClient";
 
 beforeAll(async () => {
     await mockServerNode.start_mockserver({
-        serverPort: 1080,
+        serverPort: 8080,
         trace: true,
         jvmOptions: '-Dmockserver.enableCORSForAllResponses=true'
     });
@@ -12,7 +12,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
     await mockServerNode.stop_mockserver({
-        serverPort: 1080
+        serverPort: 8080
     });
 });
 
@@ -21,7 +21,7 @@ test('fetches data on mount', async () => {
     const expectedResult = '666';
     const mockedPath = '/getMe';
     const mockHttpServer = mockServerClient.mockServerClient;
-    await mockHttpServer('127.0.0.1', 1080)
+    await mockHttpServer('127.0.0.1', 8080)
         .mockAnyResponse(
             {
                 httpRequest: {
