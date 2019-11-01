@@ -21,7 +21,7 @@ describe("Tile", () => {
     test('renders fetched data on mount', () => {
         // given
         const expectedResult = "666";
-        const promise = Promise.resolve({value: expectedResult});
+        const promise = Promise.resolve({data: {value: expectedResult}});
         client.fetchData.mockImplementation(() => promise);
         // when
         const tile = mount(<Tile dataSource={"getMe"} text={"foo"}/>);
