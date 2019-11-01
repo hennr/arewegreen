@@ -64,6 +64,7 @@
                                 <include>node/</include>
                                 <include>node_modules/</include>
                                 <include>dist/</include>
+                                <include>mockserver*.log</include>
                             </includes>
                             <followSymlinks>false</followSymlinks>
                         </fileset>
