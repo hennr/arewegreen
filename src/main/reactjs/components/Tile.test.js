@@ -27,6 +27,7 @@ describe("Tile", () => {
         const tile = mount(<Tile dataSource={"getMe"} text={"foo"}/>);
         // then
         return client.fetchData().then(() => {
+            tile.update();
             expect(tile.find("[data-test-value]").text()).toEqual(expectedResult);
         });
     });

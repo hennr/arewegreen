@@ -1,16 +1,17 @@
 import * as React from "react";
-import * as client from "../";
+import * as client from "../data/AreWeGreenClient";
 
 export default class Tile extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            value: props.value
+            value: undefined
         };
     }
+
     componentDidMount() {
-        client.fetchData()
+        client.fetchData(this.props.dataSource)
             .then((data) => {
                 this.setState({value: data.value});
             })
