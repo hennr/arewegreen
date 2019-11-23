@@ -41,7 +41,7 @@ test('fetches layout.json on fetchLayout call', async () => {
                 },
                 httpResponse: {
                     statusCode: 200,
-                    'body': JSON.stringify({value: expectedResult}),
+                    'body': {value: expectedResult},
                     delay: {
                         timeUnit: 'MILLISECONDS',
                         value: 0
