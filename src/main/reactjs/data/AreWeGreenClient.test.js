@@ -16,7 +16,7 @@ afterAll(async () => {
     });
 });
 
-test('fetches data on mount', async () => {
+test('fetches data on fetchData call', async () => {
     // given
     const expectedResult = '666';
     const mockedPath = '/getMe';
