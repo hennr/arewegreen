@@ -19,7 +19,6 @@
     "mockserver-client": "^5.7.2",
     "mockserver-node": "^5.7.2",
     "npm-check-updates": "^3.2.1",
-    "npm-run-all": "^4.1.5",
     "parcel": "^1.12.4",
     "stylus": "^0.54.7"
   },
