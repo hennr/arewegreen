@@ -20,7 +20,12 @@ export default class Tile extends React.Component {
 
     render() {
         if (this.state.value === undefined) {
-            return <div className={"spinner"}/>
+            return (
+                <div>
+                    <div className={"spinner"}/>
+                    <div className="text" data-test-text="">{this.props.text}</div>
+                </div>
+            )
         } else {
             return (
                 <div className="tile green comets">
