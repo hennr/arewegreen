@@ -1,6 +1,6 @@
 import mockServerNode from "mockserver-node";
 import mockServerClient from "mockserver-client";
-import {fetchLayout} from "./LayoutCLient";
+import {fetchLayout} from "./LayoutClient";
 
 beforeAll(async () => {
     await mockServerNode.start_mockserver({
