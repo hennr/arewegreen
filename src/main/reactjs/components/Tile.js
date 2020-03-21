@@ -12,7 +12,7 @@ export default class Tile extends React.Component {
 
     componentDidMount() {
         client.fetchData(this.props.dataSource)
-            .then((response) => {
+            .then(response => {
                 this.setState({value: response.data.value});
             })
             .catch(data => console.error("failed to fetch data"));
