@@ -26,7 +26,7 @@ public class LayoutLocationControllerTest extends AbstractTestClass {
         LayoutLocationController controller = new LayoutLocationController(defaultFilesManager);
 
         // when
-        String result = controller.exposeLayoutJsonLocationForDashbot().block();
+        String result = controller.exposeLayoutJsonLocationReactApp().block();
 
         // then
         assertEquals(expected, result);
