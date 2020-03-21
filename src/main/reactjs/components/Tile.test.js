@@ -1,5 +1,5 @@
 import Tile from "./Tile";
-import {mount} from "enzyme";
+import {shallow} from "enzyme";
 import * as client from "../data/AreWeGreenClient";
 
 jest.mock("../data/AreWeGreenClient");
@@ -11,7 +11,7 @@ describe("Tile", () => {
         const promise = Promise.reject();
         client.fetchData.mockImplementation(() => promise);
         // when
-        const tile = mount(<Tile dataSource={"BAM"} text={"bam"}/>);
+        const tile = shallow(<Tile dataSource={"BAM"} text={"bam"}/>);
         // then
         return client.fetchData().catch(() => {
             expect(tile.find(".spinner")).toExist();
@@ -24,7 +24,7 @@ describe("Tile", () => {
         const promise = Promise.resolve({data: {value: expectedResult}});
         client.fetchData.mockImplementation(() => promise);
         // when
-        const tile = mount(<Tile dataSource={"getMe"} text={"foo"}/>);
+        const tile = shallow(<Tile dataSource={"getMe"} text={"foo"}/>);
         // then
         return client.fetchData().then(() => {
             tile.update();
