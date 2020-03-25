@@ -9,5 +9,4 @@ angular.min.js
 angular.min.js.map
 .cache/
 dist/
-mockserver*.log
 CertificateAuthorityCertificate.pem
