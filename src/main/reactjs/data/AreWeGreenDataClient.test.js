@@ -1,4 +1,4 @@
-import {fetchData} from "./AreWeGreenClient";
+import {fetchData} from "./AreWeGreenDataClient";
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";

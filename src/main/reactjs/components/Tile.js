@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as client from "../data/AreWeGreenClient";
+import * as client from "../data/AreWeGreenDataClient";
 
 export default class Tile extends React.Component {
 

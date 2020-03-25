@@ -1,6 +1,6 @@
 import Tile from "./Tile";
 import {shallow} from "enzyme";
-import * as client from "../data/AreWeGreenClient";
+import * as client from "../data/AreWeGreenDataClient";
 
 jest.mock("../data/AreWeGreenClient");
 
