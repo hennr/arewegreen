@@ -10,3 +10,4 @@ angular.min.js.map
 .cache/
 dist/
 CertificateAuthorityCertificate.pem
+.parcel-cache
