@@ -105,6 +105,7 @@
                     </execution>
                     <execution>
                         <id>yarn test</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>yarn</goal>
                         </goals>
