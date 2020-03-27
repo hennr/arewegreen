@@ -31,6 +31,7 @@
     "setupFilesAfterEnv": [
       "jest-enzyme"
     ],
-    "testEnvironment": "enzyme"
+    "testEnvironment": "enzyme",
+    "collectCoverage": true
   }
 }
