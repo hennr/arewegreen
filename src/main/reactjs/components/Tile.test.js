@@ -2,7 +2,7 @@ import Tile from "./Tile";
 import {shallow} from "enzyme";
 import * as client from "../data/AreWeGreenDataClient";
 
-jest.mock("../data/AreWeGreenClient");
+jest.mock("../data/AreWeGreenDataClient");
 
 describe("Tile", () => {
 
