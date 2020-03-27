@@ -1,31 +1,69 @@
-import Tile from "../components/Tile"
-import {getLayout} from "./LayoutService";
+import {convertDataToComponents, getComponents} from "./LayoutService";
+import LayoutClient from "./LayoutClient";
+
+jest.mock('./LayoutClient');
 
 describe("LayoutService", () => {
 
-    test("returns dummy data for now", ()=> {
+    test("uses layoutClient to retrieve data", async () => {
         // given
-        const expectedData = <React.Fragment>
-            <div className={"row"}>
-                <Tile dataSource={"data?source=demo.sh"} text={"foo"}/>
-                <Tile dataSource={"data?source=demo.sh"} text={"bar"}/>
-            </div>
-            <div className={"row"}>
-                <Tile dataSource={"data?source=demo.sh"} text={"baz"}/>
-            </div>
-        </React.Fragment>;
+        LayoutClient.mockImplementation(() => {
+            return {
+                fetchLayout: () => {
+                    return new Promise((resolve, reject) => {
+                        resolve("does not matter")
+                    });
+                },
+            };
+        });
         // when
-        const result = getLayout();
+        await getComponents();
         // then
-        expect(result).toEqual(expectedData);
+        expect(LayoutClient).toHaveBeenCalled()
     });
 
-    test.skip("uses the LayoutClient to retrieve the raw input", () => {
+    test.skip("generates single component from layout.json", async () => {
+        // when
+        let components = convertDataToComponents([[{
+            "visual": "standard",
+            "image": "comets",
+            "refreshIntervalInSeconds": "30",
+            "title": "single tile",
+            "dataSource": "data?source=foo.sh"
+        }]]);
+        // then
+        const renderedComponents = render(components);
+        expect(renderedComponents.text()).toEqual("foo");
+    });
+
+    test.skip("honors rows from layout.json", () => {
 
     });
 
-    test.skip("converts the layoutClient result correctly to react components", () => {
+    test.skip("returns error component if layout.json is empty", () => {
+        // given
+        const expectedErrorMessage = "error message";
+        LayoutClient.mockImplementation(() => {
+            return {
+                fetchLayout: () => {
+                    return new Promise((resolve, reject) => {
+                        reject(expectedErrorMessage)
+                    });
+                },
+            };
+        });
+        // when
+        let components = getComponents();
+        const renderedComponents = render(components);
 
+        // then
+        // FIXME async await geht hier vielleicht nicht, lieber mit expect().rejects arbeiten
+        expect(renderedComponents.text()).toEqual(expectedErrorMessage);
     });
 
+    test.skip("returns error component if layout.json is invalid", () => {
+    });
+
+    test.skip("returns error component if layout.json can't be fetched", () => {
+    });
 });

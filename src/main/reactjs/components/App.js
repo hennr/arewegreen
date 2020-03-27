@@ -1,10 +1,26 @@
 import React from 'react';
-import {getLayout} from "../layout/LayoutService";
+import {getComponents} from "../layout/LayoutService";
 
-function App() {
-    return (
-        getLayout()
-    );
+export default class App extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            components: null
+        };
+    }
+
+    componentDidMount() {
+        getComponents()
+            .then(comps => {
+                this.setState({components: comps});
+            })
+            .catch(comps => {
+                this.setState({components: comps})
+            });
+    }
+
+    render() {
+        return this.state.components;
+    }
 }
-
-export default App;
