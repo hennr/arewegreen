@@ -1,9 +1,17 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import {getComponents} from "../layout/LayoutService";
 
-export default class App extends React.Component {
+type Props = {};
 
-    constructor(props) {
+type State = {
+    components: React.Node
+};
+
+export default class App extends React.Component<Props, State> {
+
+    constructor(props: Props) {
         super(props)
         this.state = {
             components: null
