@@ -61,6 +61,7 @@
                             <directory>src/main/reactjs</directory>
                             <includes>
                                 <include>.cache/</include>
+                                <include>.parcel-cache/</include>
                                 <include>node/</include>
                                 <include>node_modules/</include>
                                 <include>dist/</include>
