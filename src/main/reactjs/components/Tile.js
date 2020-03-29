@@ -1,10 +1,22 @@
+// @flow
+
 import * as React from "react";
 import * as client from "../data/AreWeGreenDataClient";
 
-export default class Tile extends React.Component {
+type Props = {
+    dataSource: string,
+    text: string
+};
 
-    constructor(props) {
+type State = {
+    value: any
+};
+
+export default class Tile extends React.Component<Props, State> {
+
+    constructor(props: Props) {
         super(props);
+
         this.state = {
             value: undefined
         };
@@ -12,10 +24,10 @@ export default class Tile extends React.Component {
 
     componentDidMount() {
         client.fetchData(this.props.dataSource)
-            .then(response => {
+            .then((response) => {
                 this.setState({value: response.data.value});
             })
-            .catch(data => console.error("failed to fetch data"));
+            .catch((error) => console.error("failed to fetch data: ", error));
     }
 
     render() {

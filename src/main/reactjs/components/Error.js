@@ -6,6 +6,6 @@ type Props = {
     errorMessage: string
 };
 
-export default function Error(props: Props) {
+export default function Error(props: Props): React$Element<any> {
     return <div>{props.errorMessage}</div>;
 }
