@@ -11,11 +11,11 @@
 <PROJECT_ROOT>/node_modules/.*jest.*/
 <PROJECT_ROOT>/node_modules/.*parcel.*/
 <PROJECT_ROOT>/styl/
-<PROJECT_ROOT>/.*\.test\.js
 
 [include]
 
 [libs]
+flow-typed
 
 [lints]
 
