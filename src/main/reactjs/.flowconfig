@@ -20,5 +20,6 @@ flow-typed
 [lints]
 
 [options]
+emoji=true
 
 [strict]
