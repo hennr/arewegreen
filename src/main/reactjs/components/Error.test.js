@@ -1,3 +1,6 @@
+// @flow
+
+import * as React from 'react';
 import Error from "./Error"
 import {shallow} from "enzyme";
 
