@@ -3,7 +3,7 @@
     "bundle": "parcel build index.js --no-cache --out-dir ../../../target/classes/static/js --out-file bundle --public-url /js",
     "start": "CHOKIDAR_USEPOLLING=true parcel dev.html",
     "update-dependencies": "npm-check-updates --upgrade && yarn && yarn test",
-    "watch": "CHOKIDAR_USEPOLLING=true parcel watch dev.html",
+    "watch": "CHOKIDAR_USEPOLLING=true parcel index.js --no-cache --out-dir ../../../target/classes/static/js --out-file bundle --public-url /js",
     "test": "jest",
     "flow": "flow",
     "verify": "flow && jest"

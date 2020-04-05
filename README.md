@@ -47,6 +47,23 @@ AreWeGreen is licensed under the GPLv3+.
 
 </br></br>
 
+## Development
+
+Back-End and front-end code come with hot reload support for a pleasant development experience!
+
+Start AreWeGreen via the spring-boot maven plugin as follows:
+
+    mvn spring-boot:run
+
+changes to java / kotlin classes should trigger a reload of the application thanks to spring-boot-devtools.
+
+If you want to hack on the front-end part, start parcel in watch mode as well
+
+    cd src/main/reactjs/
+    node/yarn/dist/bin/yarn watch
+
+You have to reload http://localhost:8080 afterwards. Then all changes to JS / CSS should trigger an automatic reload in your browser.
+
 ## Thanks
 
 I want to thank [travis](https://travis-ci.org/) and [codecov.io](https://codecov.io/) for their free open source plans!
