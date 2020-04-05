@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.2.RELEASE</version>
+        <version>2.2.4.RELEASE</version>
     </parent>
 
     <groupId>name.hennr</groupId>
@@ -45,18 +45,38 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>2.23.0</version>
+            <version>3.2.4</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <filesets>
+                        <fileset>
+                            <directory>src/main/reactjs</directory>
+                            <includes>
+                                <include>.cache/</include>
+                                <include>.parcel-cache/</include>
+                                <include>node/</include>
+                                <include>node_modules/</include>
+                                <include>dist/</include>
+                                <include>coverage/</include>
+                            </includes>
+                            <followSymlinks>false</followSymlinks>
+                        </fileset>
+                    </filesets>
+                </configuration>
+            </plugin>
             <!-- check for dependency updates via mvn versions:display-dependency-updates -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>2.5</version>
+                <version>2.7</version>
                 <configuration>
                     <rulesUri>file:///${session.executionRootDirectory}/maven-version-rules.xml</rulesUri>
                 </configuration>
@@ -64,9 +84,9 @@
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.6</version>
+                <version>1.9.1</version>
                 <configuration>
-                    <workingDirectory>src/main/angularjs</workingDirectory>
+                    <workingDirectory>src/main/reactjs</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
@@ -75,8 +95,8 @@
                             <goal>install-node-and-yarn</goal>
                         </goals>
                         <configuration>
-                            <nodeVersion>v8.12.0</nodeVersion>
-                            <yarnVersion>v1.10.0</yarnVersion>
+                            <nodeVersion>v12.16.1</nodeVersion>
+                            <yarnVersion>v1.22.4</yarnVersion>
                         </configuration>
                     </execution>
                     <execution>
@@ -86,7 +106,8 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>yarn test</id>
+                        <id>yarn verify</id>
+                        <phase>verify</phase>
                         <goals>
                             <goal>yarn</goal>
                         </goals>
@@ -94,12 +115,21 @@
                             <arguments>test</arguments>
                         </configuration>
                     </execution>
+                    <execution>
+                        <id>bundle</id>
+                        <goals>
+                            <goal>yarn</goal>
+                        </goals>
+                        <configuration>
+                            <arguments>run bundle</arguments>
+                        </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>3.0.2</version>
+                <version>3.2.0</version>
                 <configuration>
                     <excludes>
                         <exclude>**/*.js.map</exclude>
@@ -109,7 +139,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
             </plugin>
 
             <plugin>
@@ -117,6 +147,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <executable>true</executable>
+                    <!-- hot reload support for content in /resources; devtools don't seem to work here -->
+                    <addResources>true</addResources>
                 </configuration>
             </plugin>
 

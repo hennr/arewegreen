@@ -8,7 +8,10 @@ node/
 angular.min.js
 angular.min.js.map
 .cache/
+dist/
+CertificateAuthorityCertificate.pem
+.parcel-cache
+coverage/
 .classpath
 .factorypath
 .settings/
-

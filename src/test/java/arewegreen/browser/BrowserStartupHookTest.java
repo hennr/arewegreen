@@ -23,7 +23,7 @@ public class BrowserStartupHookTest {
         browserStartupHook.onApplicationEvent(mock(ApplicationReadyEvent.class));
 
         // then
-        verifyZeroInteractions(browserServiceMock);
+        verifyNoInteractions(browserServiceMock);
     }
 
     @Test
