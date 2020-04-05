@@ -10,7 +10,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest(value = {Application.class, CustomWebFilter.class}, properties = "user.home=${java.io.tmpdir}")
-public class DashbotLoadsTest {
+public class DashboardLoadsTest {
 
     @Autowired
     private WebTestClient webClient;

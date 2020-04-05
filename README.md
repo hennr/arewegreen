@@ -18,6 +18,8 @@ The result could look like this:
 
 ![](screenshot.png)
 
+The UI is heavily inspired by [dashbot](https://github.com/sbstnmsch/dashbot/)
+
 
 ## Get started
 
@@ -42,9 +44,6 @@ Please give heroku a sec or two (30) to start up.
 ## License
 
 AreWeGreen is licensed under the GPLv3+.
-
-It includes [dashbot](https://github.com/sbstnmsch/dashbot/) (src/main/resources/static) which is licensed under the [MIT License](LICENSE-dashbot).
-
 
 </br></br>
 
