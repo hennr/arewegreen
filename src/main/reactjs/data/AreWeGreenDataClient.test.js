@@ -18,9 +18,9 @@ describe("AreWeGreenClient", () => {
     test('fetches data on fetchData call', async () => {
         // given
         const expectedResult = '666';
-        const urlPath = "foo"
+        const urlPath = "foo";
         const mock = new MockAdapter(axios);
-        mock.onGet(`http://127.0.0.1:8080/${urlPath}`).reply(200, {
+        mock.onGet(`/${urlPath}`).reply(200, {
             value: expectedResult,
         });
         // when

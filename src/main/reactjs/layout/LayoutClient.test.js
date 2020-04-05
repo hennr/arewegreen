@@ -19,7 +19,7 @@ describe("LayoutClient", () => {
         const expectedResult = "dummy return value";
 
         const mock = new MockAdapter(axios);
-        mock.onGet(`http://127.0.0.1:8080/layout.json`).reply(200, {
+        mock.onGet(`/layout.json`).reply(200, {
             value: expectedResult,
         });
 
