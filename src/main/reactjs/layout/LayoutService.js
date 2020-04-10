@@ -4,9 +4,8 @@ import React from "react";
 import Tile from "../components/Tile";
 import LayoutClient from "./LayoutClient";
 import Error from "../components/Error"
-import type { $AxiosXHR } from "axios";
+import type {$AxiosXHR} from "axios";
 
-// FIXME return component in favour of promise here
 export function getComponents(): Promise<$AxiosXHR<*,*>> {
     return new LayoutClient().fetchLayout()
         .then(response => convertDataToComponents(response.data))
@@ -14,7 +13,6 @@ export function getComponents(): Promise<$AxiosXHR<*,*>> {
             returnErrorComponent(error.message)
         });
 }
-
 
 function returnErrorComponent(error: string): React$Element<any> {
     console.error("failed to load layout.json: " + error);
