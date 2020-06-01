@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.1",
-    "@babel/preset-env": "^7.10.0",
+    "@babel/preset-env": "^7.10.2",
     "@babel/preset-flow": "7.9.0",
     "@babel/preset-react": "^7.10.0",
     "axios-mock-adapter": "^1.18.1",
