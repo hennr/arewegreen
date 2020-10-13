@@ -13,7 +13,7 @@
     "@babel/preset-env": "^7.10.0",
     "@babel/preset-flow": "7.9.0",
     "@babel/preset-react": "^7.10.0",
-    "axios-mock-adapter": "^1.18.1",
+    "axios-mock-adapter": "^1.18.2",
     "babel-jest": "^26.0.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
