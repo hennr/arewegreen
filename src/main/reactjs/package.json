@@ -16,7 +16,7 @@
     "axios-mock-adapter": "^1.18.1",
     "babel-jest": "^26.0.1",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-adapter-react-16": "^1.15.5",
     "flow-bin": "^0.135.0",
     "flow-typed": "^3.2.1",
     "install": "^0.13.0",
