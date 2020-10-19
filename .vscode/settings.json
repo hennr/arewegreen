@@ -1,0 +1,6 @@
+{
+    "java.configuration.updateBuildConfiguration": "automatic",
+    "jest.rootPath": "src/main/reactjs/",
+    "jest.pathToJest": "node_modules/.bin/jest",
+    "flow.pathToFlow": "src/main/reactjs/node_modules/.bin/flow",
+}
