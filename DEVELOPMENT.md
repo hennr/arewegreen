@@ -1,6 +1,24 @@
 
 Some notes on the development process
 
+# hot reload
+
+Thanks to the spring-boot-devtools and parcel's watch mode areWeGreen is able to reload many code changes dynamically.
+
+## Back-End
+
+Starting the application via the spring-boot maven plugin supports hot reload of back-end code automatically:
+
+    mvn spring-boot:run
+
+## Front-End
+
+When the application is already running, you can start the parcel watcher (afterwards!) to have hot reload support and sources maps for the front-end code:
+
+    cd src/main/reactjs
+    node/yarn/dist/bin/yarn watch
+
+
 # updating front-end depdendencies
 
 This project has npm-check-updates installed. To run it, change into the reactjs dir:
