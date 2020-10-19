@@ -30,11 +30,11 @@ export default class Tile extends React.Component<Props, State> {
             .catch((error) => console.error("failed to fetch data: ", error));
     }
 
-    render() {
+    render(): React.Node {
         if (this.state.value === undefined) {
             return (
                 <div>
-                    <div className={"spinner"}/>
+                    <div className="spinner"/>
                     <div className="text" data-test-text="">{this.props.text}</div>
                 </div>
             )

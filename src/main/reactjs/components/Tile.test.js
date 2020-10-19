@@ -1,5 +1,4 @@
 import Tile from "./Tile";
-import {shallow} from "enzyme";
 import * as client from "../data/AreWeGreenDataClient";
 
 jest.mock("../data/AreWeGreenDataClient");
@@ -14,7 +13,7 @@ describe("Tile", () => {
         const tile = shallow(<Tile dataSource={"BAM"} text={"bam"}/>);
         // then
         return client.fetchData().catch(() => {
-            expect(tile.find(".spinner")).toExist();
+            expect(tile.find(".spinner")).toHaveLength(1);
         });
     });
 
