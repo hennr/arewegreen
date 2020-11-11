@@ -14,7 +14,7 @@
     "@babel/preset-flow": "7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/helper-annotate-as-pure": "^7.10.4",
-    "axios-mock-adapter": "^1.18.2",
+    "axios-mock-adapter": "^1.19.0",
     "babel-jest": "^26.6.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
