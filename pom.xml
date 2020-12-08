@@ -58,7 +58,7 @@
                 <configuration>
                     <filesets>
                         <fileset>
-                            <directory>src/main/reactjs</directory>
+                            <directory>.</directory>
                             <includes>
                                 <include>.cache/</include>
                                 <include>.parcel-cache/</include>
@@ -86,7 +86,7 @@
                 <artifactId>frontend-maven-plugin</artifactId>
                 <version>1.10.3</version>
                 <configuration>
-                    <workingDirectory>src/main/reactjs</workingDirectory>
+                    <workingDirectory>.</workingDirectory>
                 </configuration>
                 <executions>
                     <execution>
