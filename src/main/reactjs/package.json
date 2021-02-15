@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-env": "^7.12.16",
     "@babel/preset-flow": "7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/helper-annotate-as-pure": "^7.10.4",
