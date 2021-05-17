@@ -4912,10 +4912,10 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-flow-bin@^0.136.0:
-  version "0.136.0"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.136.0.tgz#2c1be64496d791ea3160047ce22968ef166835f1"
-  integrity sha512-Z0sycQDyWXiNsGAhOBUrvHPzz7Q4g38BT57+YzZGffbaBmWRNC6MGZb+R6XTzeWb30bZin5V21nPQZezJzm9cQ==
+flow-bin@^0.151.0:
+  version "0.151.0"
+  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.151.0.tgz#f1339f4c90b2c4242e5a9a2063e1e0efa0520084"
+  integrity sha512-V2UNOFUtCkWjDVws9htqBSHzHVBEW1xe6IHp4RYr7hVJPOri36cFWS2ssFM8Y0yFOz2EV79QdrhNf57wFSLEgg==
 
 flow-typed@^3.2.1:
   version "3.2.1"
