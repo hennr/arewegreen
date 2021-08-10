@@ -7,13 +7,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.Properties;
 import java.util.UUID;
 
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -22,15 +22,15 @@ import org.springframework.mock.env.MockEnvironment;
 
 public class DefaultFilesManagerTest {
 
-    @Rule
-    public TemporaryFolder temporaryFolder = new TemporaryFolder();
-
     private MockEnvironment environment = new MockEnvironment();
     private DefaultFilesManager defaultFilesManager = new DefaultFilesManager(environment, new DefaultResourceLoader());
 
-    @Before
+    @TempDir
+    Path tempDir;
+
+    @BeforeEach
     public void createNewTemporaryUserHomeFolder() throws IOException {
-        environment.setProperty("user.home", temporaryFolder.newFolder(UUID.randomUUID().toString()).getCanonicalPath());
+        environment.setProperty("user.home", tempDir.resolve(UUID.randomUUID().toString()).toAbsolutePath().toString());
     }
 
     @Test

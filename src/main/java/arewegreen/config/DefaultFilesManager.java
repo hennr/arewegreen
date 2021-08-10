@@ -91,7 +91,7 @@ public class DefaultFilesManager implements ApplicationListener<ApplicationReady
 
     private void createDefaultConfig() {
         try {
-            Files.createDirectory(getArewegreenHome());
+            Files.createDirectories(getArewegreenHome());
 
             // data dir
             Files.createDirectory(Paths.get(getDataDirectoryLocation()));

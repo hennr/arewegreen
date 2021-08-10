@@ -1,12 +1,15 @@
 package arewegreen.browser;
 
-import arewegreen.config.AreWeGreenProperties;
-import org.junit.Test;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.mock.env.MockEnvironment;
 
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import arewegreen.config.AreWeGreenProperties;
 
 public class BrowserStartupHookTest {
 
