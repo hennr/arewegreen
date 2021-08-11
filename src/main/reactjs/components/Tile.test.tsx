@@ -22,19 +22,25 @@ describe("Tile", () => {
         });
     });
 
-    test('renders fetched data on mount', () => {
+    test('renders fetched data on mount', async () => {
         // given
         const expectedText = "foo";
         const expectedValue = "666";
-        const client = new AreWeGreenDataClient();
-        jest.spyOn(client, 'fetchData').mockReturnValue(Promise.resolve( {status: 200, statusText: "ok", headers: "", config: {}, data: {finalValue: expectedValue}} ))
+        const spy = jest.spyOn(AreWeGreenDataClient.prototype, 'fetchData').mockReturnValue(Promise.resolve({
+            status: 200,
+            statusText: "ok",
+            headers: "",
+            config: {},
+            data: {finalValue: expectedValue}
+        }))
         // when
         const tile = shallow(<Tile dataSource={"getMe"} text={expectedText}/>);
+        // make enzyme wait for the Promise and re-render the component after the trigger state update :/
+        await Promise.resolve()
+        tile.update()
         // then
-        return client.fetchData("getMe").then(() => {
-            // tile.update();
-            expect(tile.find("[data-test-text]").text()).toEqual(expectedText);
-            expect(tile.find("[data-test-value]").text()).toEqual(expectedValue);
-        });
+        expect(spy).toHaveBeenCalled()
+        expect(tile.find("[data-test-text]").text()).toEqual(expectedText);
+        expect(tile.find("[data-test-value]").text()).toEqual(expectedValue);
     });
 });

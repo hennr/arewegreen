@@ -16,28 +16,24 @@ export default class Tile extends React.Component<Props, State> {
         super(props);
 
         this.state = {
-            value: undefined
+            value: null
         };
     }
 
     componentDidMount() {
         const client = new AreWeGreenDataClient();
-        console.log("did mount")
         client.fetchData(this.props.dataSource)
             .then((response) => {
-                console.log("response success: " + response);
                 this.setState({value: response.data.finalValue});
             })
             .catch((error) => {
-                console.log("response fail: " + error);
-                this.setState({value: undefined});
+                this.setState({value: null});
                 return console.error("failed to fetch data: ", error);
             });
     }
 
     render() {
-        if (this.state.value === undefined) {
-            console.log("### " + this.state.value);
+        if (!this.state.value) {
             return (
                 <div>
                     <div className="spinner"/>
@@ -45,8 +41,6 @@ export default class Tile extends React.Component<Props, State> {
                 </div>
             )
         } else {
-            console.log("!!! " + this.state.value);
-
             return (
                 <div className="tile green comets">
                     <div className="value" data-test-value="">{this.state.value}</div>

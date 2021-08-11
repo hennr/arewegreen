@@ -2,5 +2,5 @@
 module.exports = {
   collectCoverage: false,
   preset: 'ts-jest',
-  testEnvironment: 'node',
+  testEnvironment: 'jsdom',
 };
