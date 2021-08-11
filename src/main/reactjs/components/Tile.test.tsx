@@ -1,8 +1,10 @@
 import Tile from "./Tile";
 import AreWeGreenDataClient from "../data/AreWeGreenDataClient";
-import { shallow } from "enzyme";
+import {configure, shallow} from "enzyme";
 import React from "react";
-import Axios, { AxiosResponse } from "axios";
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe("Tile", () => {
 

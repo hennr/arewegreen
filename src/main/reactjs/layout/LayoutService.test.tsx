@@ -1,6 +1,9 @@
-import { convertDataToComponents, getComponents } from "./LayoutService";
+import {convertDataToComponents, getComponents} from "./LayoutService";
 import LayoutClient from "./LayoutClient";
-import { render } from "enzyme";
+import {configure, render} from "enzyme";
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
 
 describe("LayoutService", () => {
 

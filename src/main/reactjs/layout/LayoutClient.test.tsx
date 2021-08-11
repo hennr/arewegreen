@@ -14,7 +14,7 @@ describe("LayoutClient", () => {
         mock.restore();
     });
 
-    test('fetches layout.json on fetchLayout call', (done) => {
+    test('fetches layout.json on fetchLayout call', () => {
         // given
         const expectedResult = "dummy return value";
 
@@ -28,7 +28,6 @@ describe("LayoutClient", () => {
         {
             // then
             expect(result.data.value).toEqual(expectedResult);
-            done();
         }
         )
     });
