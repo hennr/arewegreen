@@ -67,7 +67,6 @@ You have to reload http://localhost:8080 afterwards. Then all changes to JS / CS
 ## Thanks
 
 I want to thank [travis](https://travis-ci.org/) and [codecov.io](https://codecov.io/) for their free open source plans!
-AreweGreen is also supported by [jetBrains](https://www.jetbrains.com/?from=arewegreen) with an open source license!
 
 </br></br>
 <p align="center">Made with ♥ in Berlin</p>

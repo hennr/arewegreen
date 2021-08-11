@@ -78,15 +78,6 @@
                     </filesets>
                 </configuration>
             </plugin>
-            <!-- check for dependency updates via mvn versions:display-dependency-updates -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <version>2.7</version>
-                <configuration>
-                    <rulesUri>file:///${session.executionRootDirectory}/maven-version-rules.xml</rulesUri>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
