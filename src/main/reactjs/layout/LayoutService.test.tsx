@@ -16,19 +16,21 @@ describe("LayoutService", () => {
         expect(spy).toHaveBeenCalled()
     });
 
-    // TODO hier geht es weiter, die Implementierung funktioniert noch nicht
-    test.skip("generates single component from layout.json", async () => {
+    test("generates single component from layout.json", () => {
         // when
-        let components = convertDataToComponents([[{
-            "visual": "standard",
-            "image": "comets",
-            "refreshIntervalInSeconds": "30",
-            "title": "single tile",
-            "dataSource": "data?source=foo.sh"
-        }]]);
+        let components = convertDataToComponents({
+            visual: "standard",
+            image: "comets",
+            refreshIntervalInSeconds: 30,
+            title: "single tile",
+            dataSource: "data?source=foo.sh"
+        });
         // then
         const renderedComponents = render(components);
-        expect(renderedComponents.text()).toEqual("foo");
+        expect(renderedComponents.find("[data-test-text]").text()).toEqual("single tile");
+    });
+
+    test.skip("generates multiple components from layout.json", async () => {
     });
 
     test.skip("honors rows from layout.json", () => {

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, {ReactElement} from "react";
 import Tile from "../components/Tile";
 import LayoutClient from "./LayoutClient";
 import Error from "../components/Error"
@@ -16,16 +16,24 @@ function returnErrorComponent(error: string): ReactElement {
     return <Error errorMessage={error} />;
 }
 
-// FIXME return transformed data based on given layoutJson
-export function convertDataToComponents(layoutJson: any): ReactElement {
-    const fixTestData =
+export interface Layout {
+    visual: string,
+    image: string,
+    refreshIntervalInSeconds: number,
+    title: string,
+    dataSource: string
+}
+
+export function convertDataToComponents(layoutJson: Layout): ReactElement {
+
+    const singleTile =
         <div className={"row"}>
-            <Tile dataSource={"data?source=demo.sh"} text={"dummyTile"} />
+            <Tile dataSource={layoutJson.dataSource} text={layoutJson.title} />
         </div>;
 
     return (
         <React.Fragment>
-            {fixTestData}
+            {singleTile}
         </React.Fragment>
     )
 }
