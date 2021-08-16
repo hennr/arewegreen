@@ -28,7 +28,7 @@ export function convertDataToComponents(layoutJson: Layout): ReactElement {
 
     const singleTile =
         <div className={"row"}>
-            <Tile dataSource={layoutJson.dataSource} text={layoutJson.title} />
+            <Tile dataSource={layoutJson.dataSource} text={layoutJson.title} refreshIntervalInSeconds={layoutJson.refreshIntervalInSeconds} />
         </div>;
 
     return (

@@ -3,7 +3,8 @@ import AreWeGreenDataClient from "../data/AreWeGreenDataClient";
 
 type Props = {
     dataSource: string,
-    text: string
+    text: string,
+    refreshIntervalInSeconds: number
 };
 
 type State = {
@@ -11,6 +12,8 @@ type State = {
 };
 
 export default class Tile extends React.Component<Props, State> {
+
+    private interval!: NodeJS.Timer;
 
     constructor(props: Props) {
         super(props);
@@ -20,7 +23,16 @@ export default class Tile extends React.Component<Props, State> {
         };
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
+
     componentDidMount() {
+        this.fetchData();
+        this.interval = setInterval(() => this.fetchData(), this.props.refreshIntervalInSeconds * 1000);
+    }
+
+    private fetchData() {
         const client = new AreWeGreenDataClient();
         client.fetchData(this.props.dataSource)
             .then((response) => {

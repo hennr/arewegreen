@@ -4,7 +4,7 @@ import {configure, shallow} from "enzyme";
 import React from "react";
 import Adapter from 'enzyme-adapter-react-16';
 
-configure({ adapter: new Adapter() });
+configure({adapter: new Adapter()});
 
 describe("Tile", () => {
 
@@ -14,7 +14,7 @@ describe("Tile", () => {
         const client = new AreWeGreenDataClient();
         jest.spyOn(client, 'fetchData').mockReturnValue(Promise.reject())
         // when
-        const tile = shallow(<Tile dataSource={"BAM"} text={expectedText}/>);
+        const tile = shallow(<Tile dataSource={"BAM"} text={expectedText} refreshIntervalInSeconds={10}/>);
         // then
         return client.fetchData("").catch(() => {
             expect(tile.find(".spinner")).toHaveLength(1);
@@ -31,10 +31,10 @@ describe("Tile", () => {
             statusText: "ok",
             headers: "",
             config: {},
-            data: {finalValue: expectedValue}
+            data: {value: expectedValue}
         }))
         // when
-        const tile = shallow(<Tile dataSource={"getMe"} text={expectedText}/>);
+        const tile = shallow(<Tile dataSource={"getMe"} text={expectedText} refreshIntervalInSeconds={10}/>);
         // make enzyme wait for the Promise and re-render the component after the trigger state update :/
         await Promise.resolve()
         tile.update()
