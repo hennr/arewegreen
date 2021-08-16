@@ -27,6 +27,6 @@ describe("AreWeGreenClient", () => {
         const client = new AreWeGreenDataClient();
         const result = await client.fetchData(queriedUrl);
         // then
-        expect(result.data).toEqual(expectedResult);
+        expect(result.data.value).toEqual(expectedResult);
     });
 });

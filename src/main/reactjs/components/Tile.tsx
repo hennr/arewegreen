@@ -24,7 +24,7 @@ export default class Tile extends React.Component<Props, State> {
         const client = new AreWeGreenDataClient();
         client.fetchData(this.props.dataSource)
             .then((response) => {
-                this.setState({value: response.data.finalValue});
+                this.setState({value: response.data.value});
             })
             .catch((error) => {
                 this.setState({value: null});
@@ -34,6 +34,7 @@ export default class Tile extends React.Component<Props, State> {
 
     render() {
         if (!this.state.value) {
+            console.log("rendering spinner tile")
             return (
                 <div>
                     <div className="spinner"/>
@@ -41,6 +42,7 @@ export default class Tile extends React.Component<Props, State> {
                 </div>
             )
         } else {
+            console.log("rendering complete tile")
             return (
                 <div className="tile green comets">
                     <div className="value" data-test-value="">{this.state.value}</div>
