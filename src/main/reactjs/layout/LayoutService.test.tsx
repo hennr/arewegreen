@@ -19,11 +19,11 @@ describe("LayoutService", () => {
     test("generates single component from layout.json", () => {
         // when
         let components = convertDataToComponents({
-            visual: "standard",
-            image: "comets",
-            refreshIntervalInSeconds: 30,
-            title: "single tile",
-            dataSource: "data?source=foo.sh"
+            "visual": "standard",
+            "image": "comets",
+            "refreshIntervalInSeconds": 30,
+            "title": "single tile",
+            "dataSource": "data?source=foo.sh"
         });
         // then
         const renderedComponents = render(components);
