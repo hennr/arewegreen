@@ -36,6 +36,29 @@ Here you can define the layout and place scripts that will provide data for your
 AreWeGreen will also start a browser automatically which opens the dashboard in a maximized window for you.
 This feature can be disabled in the settings.
 
+## Docker
+
+Build and run the application locally:
+
+    docker compose up --build
+
+The dashboard is available at http://localhost:8080. Configuration, layout and
+data scripts are stored in the named volume `arewegreen-data`.
+
+### Dokploy
+
+Create an Application in Dokploy and select this repository:
+
+* Build type: `Dockerfile`
+* Dockerfile: `Dockerfile`
+* Docker context/build path: repository root (`/`)
+* Container port for the domain: `8080`
+* Health-check path: `/actuator/health`
+* Persistent volume mount: `/home/arewegreen/arewegreen`
+
+The container disables automatic browser startup. To configure the dashboard,
+edit the files in the persistent volume or add them as Dokploy file mounts.
+
 ## Demo
 
 A live demo can be found here: https://arewegreen.herokuapp.com/

@@ -1,0 +1,14 @@
+services:
+  arewegreen:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    environment:
+      START_BROWSER_AUTOMATICALLY: "false"
+    volumes:
+      - arewegreen-data:/home/arewegreen/arewegreen
+    restart: unless-stopped
+
+volumes:
+  arewegreen-data:

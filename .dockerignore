@@ -1,0 +1,15 @@
+.git
+.github
+.idea
+.vscode
+.agents
+.codex
+target
+src/main/reactjs/node
+src/main/reactjs/node_modules
+src/main/reactjs/.cache
+src/main/reactjs/.parcel-cache
+src/main/reactjs/coverage
+*.iml
+*.log
+screenshot.png
